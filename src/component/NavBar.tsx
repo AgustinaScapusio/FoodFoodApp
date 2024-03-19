@@ -7,7 +7,7 @@ export default function NavBar() {
         <nav className='navbar'>
         <div className='logo-container'>
         <img src={logo} alt="logo" />
-        <h1>FoodFoodApp</h1>
+        <h1>FoodFood</h1>
         </div>
         <div className='navbar-list'>
         <ul>
