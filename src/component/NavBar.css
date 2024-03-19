@@ -10,6 +10,16 @@
 }
 h1{
     font-size: 3rem;
+    margin: 0 10px;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+
 }
 ul{
     display: flex;
@@ -26,5 +36,19 @@ a{
     color: white;
 }
 a:hover{
-    color: #646cff;
+    color: #35E1FF;
 } 
+.cart{
+    margin:0 30px;
+    padding: 10px 15px;
+    background-color: #35E1FF;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.cart:hover{
+    background-color: white;
+    color: #35E1FF;
+    border: 1px solid #35E1FF;
+    transition: 0.2s ease-in-out;
+}
