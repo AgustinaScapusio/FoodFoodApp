@@ -9,7 +9,7 @@ export default function NavBar() {
         <img src={logo} alt="logo" />
         <h1>FoodFoodApp</h1>
         </div>
-
+        <div className='navbar-list'>
         <ul>
             <li>
             <Link to="/">Home</Link>
@@ -22,6 +22,7 @@ export default function NavBar() {
             </li>
             <Button className="cart" text={"Cart (0)"} onClick={() => {}}/>
         </ul>
+        </div>
         </nav>
     );
     }

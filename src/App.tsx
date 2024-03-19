@@ -7,7 +7,6 @@ import { SearchPage } from "./pages/SearchPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { LoginPage } from "./pages/LoginPage";
 import { ProfilePage } from "./pages/ProfilePage";
-import { Meals } from "./component/Meals.tsx";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +27,6 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <Meals />
     </>
   );
 }

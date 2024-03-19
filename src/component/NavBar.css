@@ -8,11 +8,11 @@
     width: 100%;
     height: 15vh;
 }
-h1{
+.logo-container h1{
     font-size: 3rem;
     margin: 0 10px;
 }
-img{
+.logo-container img{
     width: 100px;
     height: 100px;
 }
@@ -21,21 +21,21 @@ img{
     align-items: center;
 
 }
-ul{
+.navbar-list ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
     padding:30px;
 }
-li{
+.navbar-list li{
     margin: 0 30px;
 }
-a{
+.navbar-list a{
     text-decoration: none;
     color: white;
 }
-a:hover{
+.navbar-list a:hover{
     color: #35E1FF;
 } 
 .cart{
