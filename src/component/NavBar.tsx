@@ -1,28 +1,28 @@
-import {Link} from 'react-router-dom';
-import logo from '../assets/vectorstock_46110475_transparent.png';
-import Button from './Button';
-import './NavBar.css';
+import { Link } from "react-router-dom";
+import logo from "../assets/vectorstock_46110475_transparent.png";
+import Button from "./Button";
+import "./NavBar.css";
 export default function NavBar() {
-    return (
-        <nav className='navbar'>
-        <div className='logo-container'>
+  return (
+    <nav className="navbar">
+      <div className="logo-container">
         <img src={logo} alt="logo" />
-        <h1>FoodFood</h1>
-        </div>
-        <div className='navbar-list'>
+        <h1 className={"text-zinc-300"}>FoodFood</h1>
+      </div>
+      <div className="navbar-list">
         <ul>
-            <li>
+          <li>
             <Link to="/">Home</Link>
-            </li>
-            <li>
+          </li>
+          <li>
             <Link to="/search">Search</Link>
-            </li>
-            <li>
+          </li>
+          <li>
             <Link to="/profile">Profile</Link>
-            </li>
-            <Button className="cart" text={"Cart (0)"} onClick={() => {}}/>
+          </li>
+          <Button className="cart" text={"Cart (0)"} onClick={() => {}} />
         </ul>
-        </div>
-        </nav>
-    );
-    }
+      </div>
+    </nav>
+  );
+}
