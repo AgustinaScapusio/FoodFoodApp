@@ -1,22 +1,22 @@
-import { Meal, mealFetch } from "./fetch/MealFetch.tsx";
-import { useEffect, useState } from "react";
-import styles from "./meals.module.css";
+import { fetchData } from "./fetch/MealFetch.tsx";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store";
 
 export function Meals() {
-  const [meal, setMeal] = useState<Meal[]>([]);
+  const { data, loading } = useAppSelector((state) => state.meals);
+  const mealDispatch = useAppDispatch();
 
   useEffect(() => {
-    mealFetch().then((meal) => setMeal(meal));
-  }, []);
+    mealDispatch(fetchData());
+  }, [mealDispatch]);
 
   return (
     <div>
-      {meal.map((meal) => (
-        <div key={meal.id} className={styles.div}>
-          <p>{meal.name}</p>
-          <img src={meal.mealImage} alt={"text"} />
-        </div>
-      ))}
+      {loading ? (
+        <p>Loading...........</p>
+      ) : (
+        data.map((meals) => <p>{meals.name}</p>)
+      )}
     </div>
   );
 }

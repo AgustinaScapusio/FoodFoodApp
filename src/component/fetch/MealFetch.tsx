@@ -1,21 +1,19 @@
-export type Meal = {
-  id: number;
-  name: string;
-  description: string;
-  category: string;
-  mealImage: string;
-  price: number;
-  restaurantId: number;
-  allergens: string;
-};
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { Meal } from "../../types/types.ts";
 
-type MealRes = Meal[];
+// export async function mealFetch(): Promise<MealRes> {
+//   const res = await fetch("https://feedfood.azurewebsites.net/Meal", {
+//     headers: {
+//       Accept: "application/json",
+//     },
+//   });
+//   return await res.json();
+// }
 
-export async function mealFetch(): Promise<MealRes> {
-  const res = await fetch("https://feedfood.azurewebsites.net/Meal", {
-    headers: {
-      Accept: "application/json",
-    },
-  });
-  return await res.json();
-}
+export const fetchData = createAsyncThunk(
+  "get/meals",
+  async (): Promise<[Meal]> => {
+    const response = await fetch("https://localhost:7081/Meal");
+    return await response.json();
+  },
+);
