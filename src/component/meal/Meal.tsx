@@ -1,13 +1,13 @@
 import { useAppDispatch, useAppSelector } from "../../../store";
 import { useEffect } from "react";
-import { fetchData } from "../http/MealFetch.tsx";
+import { fetchMeals } from "../http/MealFetch.tsx";
 
 export function Meal() {
   const { data, loading } = useAppSelector((state) => state.meals);
   const mealDispatch = useAppDispatch();
 
   useEffect(() => {
-    mealDispatch(fetchData());
+    mealDispatch(fetchMeals());
   }, [mealDispatch]);
 
   return (
