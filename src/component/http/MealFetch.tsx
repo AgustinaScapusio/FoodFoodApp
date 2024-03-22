@@ -17,6 +17,14 @@ export const fetchMealsById = createAsyncThunk(
   },
 );
 
+export const fetchMealsByRestaurant = createAsyncThunk(
+  "get/mealsByRestaurant",
+  async (id: number): Promise<[Meal]> => {
+    const response = await fetch(`http://localhost:5147/Meal/mealRest/${id}`);
+    return await response.json();
+  },
+);
+
 export const createMeal = createAsyncThunk(
   "post/createMeal",
   async (createMeal: Omit<Meal, "id">): Promise<Meal> => {
