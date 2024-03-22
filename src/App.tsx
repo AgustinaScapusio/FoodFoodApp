@@ -7,6 +7,7 @@ import { SearchPage } from "./pages/SearchPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { LoginPage } from "./pages/LoginPage";
 import { ProfilePage } from "./pages/ProfilePage";
+import { RestaurantsPage } from "./pages/RestaurantsPage";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "/restaurants/:id", element: <RestaurantDetailsPage /> },
+      { path: "/restaurants", element: <RestaurantsPage />},
       { path: "/search", element: <SearchPage /> },
       { path: "/register", element: <RegisterPage /> },
       { path: "/login", element: <LoginPage /> },
