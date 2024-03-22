@@ -1,6 +1,7 @@
 import { fetchRestaurant } from "../http/RestaurantHttp";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store";
+import { RestaurantCard } from "./UI/RestaurantCard";
 
 
 export function Restaurants() {
@@ -12,11 +13,11 @@ export function Restaurants() {
 	}, [restaurantDispatch]);
 
 	return (
-		<div>
+		<div className={"flex gap-4 flex-wrap p-1 "}>
 			{loading ? (
 				<p>Loading...........</p>
 			) : (
-				data.map((restaurant) => <p>{restaurant.name}</p>)
+				data.map((restaurant) => <RestaurantCard key={restaurant.id} restaurant={restaurant} />)
 			)}
 		</div>
 	);
