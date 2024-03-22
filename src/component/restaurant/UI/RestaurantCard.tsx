@@ -1,9 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { Restaurant } from "../../../types/types";
 
 export function RestaurantCard({restaurant} : {restaurant: Restaurant}) {
+    const navigate= useNavigate();
+
+    const handlerClick = () => {
+        navigate(`/restaurants/${restaurant.id}`);
+    }
+
     return (
-        <div className={
-              " max-w-96 box shadow flex flex-col justify-between gap-2"
+        <div onClick={handlerClick} className={
+              " max-w-96 box shadow flex flex-col justify-between gap-2 cursor-pointer"
             }>
             <img src={restaurant.image} alt={restaurant.name} className={"object-cover h-[240px]"}/>
             <div className={"p-2"}>

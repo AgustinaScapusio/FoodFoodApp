@@ -25,7 +25,8 @@ export function RestaurantById() {
                         <p>{restaurant?.description}</p>
                         <p>{restaurant?.address}</p>
                         <p>{restaurant?.category}</p>
-                        <p>{restaurant?.isOpen}</p>
+                        
+
                     </div>
                 )}
             </div>
