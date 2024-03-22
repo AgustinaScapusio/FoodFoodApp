@@ -1,5 +1,5 @@
 import { Meals } from "../component/Meals";
-import { Restaurants } from "../component/restaurant/Restaurant";
+import { Restaurants } from "../component/restaurant/Restaurants";
 
 export function HomePage() {
   return (
