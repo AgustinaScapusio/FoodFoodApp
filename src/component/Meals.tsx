@@ -1,4 +1,4 @@
-import { fetchData } from "./fetch/MealFetch.tsx";
+import { fetchData } from "./http/MealFetch.tsx";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 

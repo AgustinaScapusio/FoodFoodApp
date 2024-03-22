@@ -13,7 +13,7 @@ import { Meal } from "../../types/types.ts";
 export const fetchData = createAsyncThunk(
   "get/meals",
   async (): Promise<[Meal]> => {
-    const response = await fetch("https://localhost:7081/Meal");
+    const response = await fetch("http://localhost:5147/Meal");
     return await response.json();
   },
 );
