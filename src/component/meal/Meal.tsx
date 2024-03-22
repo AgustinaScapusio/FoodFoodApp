@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../../../store";
 import { useEffect } from "react";
 import { fetchMeals } from "../http/MealFetch.tsx";
+import { MealCard } from "./UI/MealCard.tsx";
 
 export function Meal() {
   const { data, loading } = useAppSelector((state) => state.meals);
@@ -16,21 +17,7 @@ export function Meal() {
         <p>Loading...........</p>
       ) : (
         data.map((meal) => (
-          <div
-            className={
-              " max-w-96 box shadow flex flex-col justify-between gap-2"
-            }
-          >
-            <img
-              className={"object-cover h-[240px]"}
-              src={meal.mealImage}
-              alt={meal.name}
-            />
-            <div className={"p-2"}>
-              <p className={"text-4xl font-extralight"}>{meal.name}</p>
-              <p className={"text-xl font-light"}>{meal.description}</p>
-            </div>
-          </div>
+         <MealCard key={meal.id} meal={meal} />
         ))
       )}
     </div>
