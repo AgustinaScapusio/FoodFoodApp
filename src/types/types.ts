@@ -8,3 +8,14 @@ export type Meal = {
   restaurantId: number;
   allergens: string;
 };
+export type Restaurant = {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  address: string;
+  category: string;
+  closingTime: Date;
+  openingTime: Date;
+  isOpen: boolean;
+};
