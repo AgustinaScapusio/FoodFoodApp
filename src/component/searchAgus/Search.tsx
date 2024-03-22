@@ -37,16 +37,17 @@ export function Search() {
             <input
                 type="text"
                 placeholder="Search restaurant or meal..."
-                className="w-96 p-2 border-2 border-gray-300"
+                className="w-96 p-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-10 ml-5"
                 onChange={handleSearch}
             />
             <div>
+                {filteredRestaurants.length <= 0 && filteredMeals.length <= 0 && <p className="text-center mt-10">No result found</p>}
                 {restaurantLoading ? (
                     <p>Loading...</p>
                 ) : (
                     <>
-                    {filteredRestaurants.length > 0 && <h2>Restaurants</h2>}
-                        <div className="flex gap-4 flex-wrap p-1">
+                    {filteredRestaurants.length > 0 && <h2 className="mt-10 mb-10 ml-4 mr-4 text-2xl">Restaurants</h2>}
+                        <div className="flex gap-4 flex-wrap p-1 ml-2 mr-2">
                             {filteredRestaurants.map((restaurant) => (
                                 <RestaurantCard key={restaurant.id} restaurant={restaurant} />
                             ))}
@@ -59,8 +60,8 @@ export function Search() {
                     <p>Loading...</p>
                 ) : (
                     <>
-                    {filteredMeals.length > 0 && <h2>Meals</h2>}
-                        <div className="flex gap-4 flex-wrap p-1">
+                    {filteredMeals.length > 0 && <h2 className="mt-10 mb-10 ml-4 mr-4 text-2xl">Meals</h2>}
+                        <div className="flex gap-2 flex-wrap p-1 ml-2 mr-2">
                             {filteredMeals.map((meal) => (
                                 <MealCard key={meal.id} meal={meal} />
                             ))}
