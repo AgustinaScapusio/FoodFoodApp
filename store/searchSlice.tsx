@@ -12,16 +12,16 @@ const searchSlice = createSlice({
     name: "test",
     initialState,
     reducers: {
-        meow : (state) => {
+        increment : (state) => {
             state.value += 1;
         },
-        demeow : (state) => {
+        decrement : (state) => {
             state.value -= 1;
         }
 
     }
 })
 
-export const { meow, demeow} = searchSlice.actions
+export const { increment, decrement} = searchSlice.actions
 
 export default searchSlice.reducer;
