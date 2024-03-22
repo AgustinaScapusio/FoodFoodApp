@@ -19,3 +19,13 @@ export type Restaurant = {
   openingTime: Date;
   isOpen: boolean;
 };
+export type CreateRestaurantProps = {
+  name: string;
+  description: string;
+  image: string;
+  address: string;
+  category: string;
+  closingTime: Date;
+  openingTime: Date;
+  isOpen: boolean;
+};
