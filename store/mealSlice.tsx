@@ -4,7 +4,7 @@
 
 import { Meal } from "../src/types/types";
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchData } from "../src/component/http/MealFetch";
+import { fetchMeals } from "../src/component/http/MealFetch";
 
 type MealState = {
   loading: boolean;
@@ -21,14 +21,14 @@ export const mealSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchData.pending, (state) => {
+    builder.addCase(fetchMeals.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(fetchData.fulfilled, (state, action) => {
+    builder.addCase(fetchMeals.fulfilled, (state, action) => {
       state.data = action.payload;
       state.loading = false;
     });
-    builder.addCase(fetchData.rejected, (state) => {
+    builder.addCase(fetchMeals.rejected, (state) => {
       state.loading = false;
     });
   },
