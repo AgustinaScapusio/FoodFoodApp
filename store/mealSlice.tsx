@@ -4,7 +4,7 @@
 
 import { Meal } from "../src/types/types";
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchData } from "../src/component/fetch/MealFetch";
+import { fetchData } from "../src/component/http/MealFetch";
 
 type MealState = {
   loading: boolean;

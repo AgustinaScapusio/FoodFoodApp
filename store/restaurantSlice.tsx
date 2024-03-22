@@ -1,6 +1,6 @@
 import {Restaurant } from '../src/types/types';
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchRestaurant } from '../src/component/fetch/RestaurantFetch';
+import { fetchRestaurant } from '../src/component/http/RestaurantHttp';
 
 type RestaurantState = {
   loading: boolean;

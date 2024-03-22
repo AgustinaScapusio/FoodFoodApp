@@ -1,6 +1,6 @@
-import { fetchRestaurant } from "./fetch/RestaurantFetch";
+import { fetchRestaurant } from "../http/RestaurantHttp";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../../store";
 
 
 export function Restaurants() {
