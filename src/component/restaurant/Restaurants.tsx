@@ -13,7 +13,7 @@ export function Restaurants() {
 	}, [restaurantDispatch]);
 
 	return (
-		<div className={"flex gap-4 flex-wrap p-1 "}>
+		<div className={"flex gap-4 flex-wrap p-1 justify-center"}>
 			{loading ? (
 				<p>Loading...........</p>
 			) : (
