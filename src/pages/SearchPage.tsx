@@ -1,4 +1,4 @@
-import { Search } from "../component/searchAgus/Search";
+import { Search } from "../component/search/Search";
 
 export function SearchPage() {
 	return <>
