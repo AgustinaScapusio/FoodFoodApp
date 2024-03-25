@@ -43,7 +43,7 @@ export function Search() {
             <input
                 type="text"
                 placeholder="Search restaurant or meal..."
-                className="w-3/4 p-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-10 ml-5"
+                className="w-3/4 p-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-10 ml-5 md:flex md:justify-center md:align-center md:w-1/2 md:mt-10 md:ml-2 md:mr-0 md:p-31 md:max-w-700"
                 onChange={handleSearch}
             />
             <div>
@@ -53,7 +53,7 @@ export function Search() {
                 ) : (
                     <>
                     {filteredRestaurants.length > 0 && <h2 className="mt-10 mb-10 ml-4 mr-4 text-2xl">Restaurants</h2>}
-                        <div className="flex gap-4 flex-wrap p-1 ml-2 mr-2">
+                        <div className="flex gap-4 flex-wrap p-1 ml-2 mr-2 md:flex md:justify-center md:align-center md:gap-4 md:min-w-96 md:max-w-96">
                             {filteredRestaurants.map((restaurant) => (
                                 <RestaurantCard key={restaurant.id} restaurant={restaurant} />
                             ))}
