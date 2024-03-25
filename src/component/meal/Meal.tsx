@@ -12,16 +12,16 @@ export function Meal({ restaurantId }: { restaurantId: number }) {
   }, [mealDispatch, restaurantId]);
 
   return (
-    <div className={"flex gap-2 flex-wrap p-1 "}>
+    <>
       {loading ? (
         <p>Loading...........</p>
       ) : (
-        <div>
+        <div className={"flex flex-row flex-wrap gap-2  p-1 "}>
           {data.map((meal) => (
             <MealCard key={meal.id} meal={meal} />
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 }

@@ -11,7 +11,7 @@ export function MealCard({ meal }: { meal: MealType }) {
   return (
     <div
       className={
-        "max-w-96 box shadow flex flex-col justify-between gap-2 cursor-pointer"
+        "max-w-96 min-w-96 box shadow flex flex-col justify-between gap-2 cursor-pointer"
       }
     >
       <img
