@@ -2,18 +2,13 @@ import { useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../../store";
 import { fetchRestaurantById } from "../../http/RestaurantHttp.tsx";
 import { useEffect } from "react";
-import { fetchMealsByRestaurant } from "../../http/MealFetch.tsx";
+import { Meal } from "../meal/Meal.tsx";
 
 export function RestaurantById() {
   const { data: dataRest, loading: loadingRest } = useAppSelector(
     (state) => state.restaurants,
   );
   const restaurantDispatch = useAppDispatch();
-
-  const { data: dataMeal, loading: loadingMeal } = useAppSelector(
-    (state) => state.meals,
-  );
-  const mealDispatch = useAppDispatch();
 
   const { id } = useParams<{ id: string | undefined }>();
   const restaurantId = id ? parseInt(id) : 0;
@@ -23,8 +18,7 @@ export function RestaurantById() {
 
   useEffect(() => {
     restaurantDispatch(fetchRestaurantById(restaurantId));
-    mealDispatch(fetchMealsByRestaurant(restaurantId));
-  }, [mealDispatch, restaurantDispatch, restaurantId]);
+  }, [restaurantDispatch, restaurantId]);
 
   return (
     <div>
@@ -38,17 +32,8 @@ export function RestaurantById() {
           <p>{restaurant?.category}</p>
         </div>
       )}
-      {loadingMeal ? (
-        <p>Loading meals</p>
-      ) : (
-        <div>
-          {dataMeal.map((meal) => (
-            <div key={meal.id}>
-              <p>{meal.name}</p>
-            </div>
-          ))}
-        </div>
-      )}
+
+      <Meal restaurantId={restaurantId} />
     </div>
   );
 }
