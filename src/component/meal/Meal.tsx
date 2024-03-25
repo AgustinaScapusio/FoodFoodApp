@@ -16,7 +16,7 @@ export function Meal({ restaurantId }: { restaurantId: number }) {
       {loading ? (
         <p>Loading...........</p>
       ) : (
-        <div className={"flex flex-row flex-wrap gap-2 p-1 justify-center"}>
+        <div className={"grid grid-cols-4 gap-4 col-span-3 auto-rows-min"}>
           {data.map((meal) => (
             <MealCard key={meal.id} meal={meal} />
           ))}
