@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "../../../store";
+import { useAppSelector, useAppDispatch } from "../../store/index.tsx";
 import { fetchRestaurantById } from "../../http/RestaurantHttp.tsx";
 import { useEffect } from "react";
 import { Meal } from "../meal/Meal.tsx";

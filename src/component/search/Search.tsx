@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../../../store";
+import { useAppSelector, useAppDispatch } from "../../store/index";
 import { Restaurant, MealType } from "../../types/types";
 import { fetchRestaurant } from "../../http/RestaurantHttp";
-import { fetchMeals } from "../../http/MealFetch";
+import { fetchMeals } from "../../http/MealHttp";
 import { RestaurantCard } from "../restaurant/UI/RestaurantCard";
 import { MealCard } from "../meal/UI/MealCard";
 
