@@ -11,7 +11,7 @@ export function MealCard({ meal }: { meal: MealType }) {
   };
 
   const handleCart = () => {
-    dispatch(addMealToCart({ ...order, id: Math.random() }));
+  dispatch(addMealToCart(order));
   };
   return (
     <div
