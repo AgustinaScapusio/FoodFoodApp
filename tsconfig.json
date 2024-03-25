@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "store/searchSlice.tsx"],
+  "include": ["src", "store/searchSlice.tsx", "src/http"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

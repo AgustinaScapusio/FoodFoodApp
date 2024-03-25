@@ -30,3 +30,12 @@ export type CreateRestaurantProps = {
   openingTime: Date;
   isOpen: boolean;
 };
+export type Order = {
+  id: number;
+  mealId: number;
+  quantity: number;
+};
+export type CreateOrderProps = {
+  mealId: number;
+  quantity: number;
+};

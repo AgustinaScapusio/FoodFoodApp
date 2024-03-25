@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../../store";
 import { useEffect } from "react";
-import { fetchMeals } from "../http/MealFetch.tsx";
+import { fetchMeals } from "../../http/MealFetch.tsx";
 import { MealCard } from "./UI/MealCard.tsx";
 
 export function Meal() {

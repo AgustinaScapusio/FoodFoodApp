@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { CreateRestaurantProps, Restaurant } from "../../types/types.ts";
+import { CreateRestaurantProps, Restaurant } from "../types/types.ts";
 
 export const fetchRestaurant = createAsyncThunk(
   "get/restaurants",

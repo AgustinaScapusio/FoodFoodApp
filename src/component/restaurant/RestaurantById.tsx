@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../../store";
-import { fetchRestaurantById } from "../http/RestaurantHttp";
+import { fetchRestaurantById } from "../../http/RestaurantHttp.tsx";
 import { useEffect } from "react";
-import { fetchMealsByRestaurant } from "../http/MealFetch.tsx";
+import { fetchMealsByRestaurant } from "../../http/MealFetch.tsx";
 
 export function RestaurantById() {
   const { data: dataRest, loading: loadingRest } = useAppSelector(

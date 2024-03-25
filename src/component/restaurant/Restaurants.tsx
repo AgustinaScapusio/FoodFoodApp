@@ -1,4 +1,4 @@
-import { fetchRestaurant } from "../http/RestaurantHttp";
+import { fetchRestaurant } from "../../http/RestaurantHttp";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store";
 import { RestaurantCard } from "./UI/RestaurantCard";
