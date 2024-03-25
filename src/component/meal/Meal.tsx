@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "../../store/index.tsx";
+import { useAppDispatch, useAppSelector } from "../../store";
 import { useEffect } from "react";
 import { fetchMealsByRestaurant } from "../../http/MealHttp.tsx";
 import { MealCard } from "./UI/MealCard.tsx";
@@ -16,7 +16,7 @@ export function Meal({ restaurantId }: { restaurantId: number }) {
       {loading ? (
         <p>Loading...........</p>
       ) : (
-        <div className={"grid grid-cols-4 gap-4 col-span-3 auto-rows-min"}>
+        <div className={"grid  gap-4 lg:grid-cols-3 md:grid-cols-2"}>
           {data.map((meal) => (
             <MealCard key={meal.id} meal={meal} />
           ))}
