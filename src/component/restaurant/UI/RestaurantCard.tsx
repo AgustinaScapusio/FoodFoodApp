@@ -12,7 +12,7 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
     <div
       onClick={handlerClick}
       className={
-        " max-w-96 shadow flex flex-col justify-between gap-6 cursor-pointer bg-white rounded-md"
+        "max-w-96 shadow flex flex-col justify-between gap-6 cursor-pointer bg-white rounded-md"
       }
     >
       <img

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/vectorstock_46110475_transparent.png";
-import Button from "./Button";
 import { useAppSelector } from "../store/index";
 import "./NavBar.css";
 // import {Cart} from "./cart/Cart";
@@ -39,7 +38,7 @@ export default function NavBar() {
           <li>
             <Link to="/profile">Profile</Link>
           </li>
-          <Button className="cart" text={`Cart (${total})`} onClick={() => {}} />
+          <button className="cart" onClick={()=>{}}>{`Cart (${total})`}</button>
         </ul>
       </div>
     </nav>
