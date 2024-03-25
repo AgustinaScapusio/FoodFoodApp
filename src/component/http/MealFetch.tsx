@@ -4,7 +4,7 @@ import { Meal } from "../../types/types.ts";
 export const fetchMeals = createAsyncThunk(
   "get/meals",
   async (): Promise<[Meal]> => {
-    const response = await fetch("http://localhost:5147/Meal");
+    const response = await fetch("https://localhost:7081/Meal");
     return await response.json();
   },
 );
@@ -12,7 +12,7 @@ export const fetchMeals = createAsyncThunk(
 export const fetchMealsById = createAsyncThunk(
   "get/mealsById",
   async (id: number): Promise<Meal> => {
-    const response = await fetch(`http://localhost:5147/Meal/${id}`);
+    const response = await fetch(`https://localhost:7081/Meal/${id}`);
     return await response.json();
   },
 );
@@ -20,7 +20,7 @@ export const fetchMealsById = createAsyncThunk(
 export const fetchMealsByRestaurant = createAsyncThunk(
   "get/mealsByRestaurant",
   async (id: number): Promise<[Meal]> => {
-    const response = await fetch(`http://localhost:5147/Meal/mealRest/${id}`);
+    const response = await fetch(`https://localhost:7081/Meal/mealRest/${id}`);
     return await response.json();
   },
 );
@@ -28,7 +28,7 @@ export const fetchMealsByRestaurant = createAsyncThunk(
 export const createMeal = createAsyncThunk(
   "post/createMeal",
   async (createMeal: Omit<Meal, "id">): Promise<Meal> => {
-    const response = await fetch("http://localhost:5147/Meal", {
+    const response = await fetch("https://localhost:7081/Meal", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
