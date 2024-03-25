@@ -52,3 +52,24 @@
     border: 1px solid #35E1FF;
     transition: 0.2s ease-in-out;
 }
+@media (max-width: 768px){
+    .navbar{
+        flex-direction: column;
+        height: 30vh;
+    }
+    .navbar-list ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        
+    }
+    .navbar-list li{
+        margin: 0 15px;
+    }
+    .cart{
+        margin: 0 15px;
+    }
+}
