@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { postOrder } from '../src/http/OrderHttp';
-import { Order } from '../src/types/types';
+import { postOrder } from '../http/OrderHttp';
+import { Order } from '../types/types';
 
 interface CartState {
   data: Order[];
@@ -16,15 +16,6 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addCart: (state, action: PayloadAction<Order>) => {
-      const index = state.data.findIndex((item) => item.mealId === action.payload.mealId);
-      if (index === -1) {
-        state.data.push(action.payload);
-      }
-    },
-    removeCart: (state, action: PayloadAction<Order>) => {
-      state.data = state.data.filter((item) => item.mealId !== action.payload.mealId);
-    },
     addQuantity: (state, action: PayloadAction<Order>) => {
       const index = state.data.findIndex((item) => item.mealId === action.payload.mealId);
       if (index !== -1) {
@@ -38,6 +29,14 @@ export const cartSlice = createSlice({
         if (state.data[index].quantity === 0) {
           state.data = state.data.filter((item) => item.mealId !== action.payload.mealId);
         }
+      }
+    },
+    addMealToCart: (state, action: PayloadAction<Order>) => {
+      const index = state.data.findIndex((item) => item.mealId === action.payload.mealId);
+      if (index !== -1) {
+        state.data[index].quantity += 1;
+      } else {
+        state.data.push(action.payload);
       }
     },
   },
@@ -56,6 +55,6 @@ export const cartSlice = createSlice({
 });
 
 
-export const { addCart, removeCart, addQuantity, reduceQuantity } = cartSlice.actions;
+export const { addMealToCart, addQuantity, reduceQuantity } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/vectorstock_46110475_transparent.png";
 import Button from "./Button";
+import { useAppSelector } from "../store/index";
+
 import "./NavBar.css";
 export default function NavBar() {
+  const { data } = useAppSelector((state) => state.cart);
+  const total = data.reduce((acc: number, item: { quantity: number; }) => acc + item.quantity, 0);
   return (
     <nav className="navbar">
       <div className="logo-container">
@@ -20,7 +24,7 @@ export default function NavBar() {
           <li>
             <Link to="/profile">Profile</Link>
           </li>
-          <Button className="cart" text={"Cart (0)"} onClick={() => {}} />
+          <Button className="cart" text={`Cart (${total})`} onClick={() => {}} />
         </ul>
       </div>
     </nav>

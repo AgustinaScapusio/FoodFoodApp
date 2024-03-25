@@ -1,6 +1,6 @@
-import { useAppDispatch, useAppSelector } from "../../../store";
+import { useAppDispatch, useAppSelector } from "../../store/index.tsx";
 import { useEffect } from "react";
-import { fetchMealsByRestaurant } from "../../http/MealFetch.tsx";
+import { fetchMealsByRestaurant } from "../../http/MealHttp.tsx";
 import { MealCard } from "./UI/MealCard.tsx";
 
 export function Meal({ restaurantId }: { restaurantId: number }) {
