@@ -16,7 +16,9 @@ export function Meal({ restaurantId }: { restaurantId: number }) {
       {loading ? (
         <p>Loading...........</p>
       ) : (
-        <div className={"grid  gap-4 lg:grid-cols-3 md:grid-cols-2"}>
+        <div
+          className={"grid  gap-4 lg:grid-cols-3 md:grid-cols-2 mx-3 my-10 "}
+        >
           {data.map((meal) => (
             <MealCard key={meal.id} meal={meal} />
           ))}

@@ -49,7 +49,7 @@ export function RestaurantById() {
           </div>
         </div>
       )}
-      <div className="flex gap-4 flex-wrap p-1 justify-center mt-10">
+      <div className="flex gap-4 flex-wrap p-1 justify-center ">
         <Meal restaurantId={restaurantId} />
       </div>
     </div>
