@@ -7,7 +7,7 @@ import { cartSlice } from "./cartSlice.tsx";
 export const store = configureStore({
   reducer: {
     meals: mealSlice.reducer,
-    cart: cartSlice.reducer,
+    cartSlice: cartSlice.reducer,
     restaurants: restaurantSlice.reducer,
   },
 });
