@@ -1,13 +1,7 @@
-import { useAppSelector } from "../../../../store";
 import { MealType } from "../../../types/types";
 
 export function MealCard({ meal }: { meal: MealType }) {
-  const { data: restaurantData } = useAppSelector((state) => state.restaurants);
-
-  const restaurant = restaurantData.find(
-    (restaurant) => restaurant.id === meal.restaurantId,
-  );
-
+  
   return (
     <div
       className={
@@ -21,12 +15,13 @@ export function MealCard({ meal }: { meal: MealType }) {
       />
       <div className={"p-2"}>
         <p className={"text-4xl font-extralight"}>{meal.name}</p>
-        {restaurant && (
-          <p className={"text-xl font-light"}>Restaurant: {restaurant.name}</p>
-        )}
-        <p className={"text-xl font-light"}>{meal.category}</p>
+        <p className={"text-xl font-light"}>{meal.description}</p>
+        <p className={"text-xl font-light"}>Allergens: {meal.allergens}</p>
         <p className={"text-xl font-light"}>{meal.price}</p>
       </div>
+      <button className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"}>
+        Add to cart
+      </button>
     </div>
   );
 }
