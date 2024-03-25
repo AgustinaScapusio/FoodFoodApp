@@ -1,13 +1,11 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { mealSlice } from "./mealSlice.tsx";
-import searchSlicess from "./searchSlice.tsx";
 import { restaurantSlice } from "./restaurantSlice.tsx";
 
 export const store = configureStore({
   reducer: {
     meals: mealSlice.reducer,
-    oogabooga : searchSlicess,
     restaurants: restaurantSlice.reducer,
   },
 });

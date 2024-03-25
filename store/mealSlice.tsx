@@ -4,7 +4,7 @@
 
 import { Meal } from "../src/types/types";
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchMeals } from "../src/http/MealFetch";
+import { fetchMeals, fetchMealsByRestaurant } from "../src/http/MealFetch";
 
 type MealState = {
   loading: boolean;
@@ -30,6 +30,9 @@ export const mealSlice = createSlice({
     });
     builder.addCase(fetchMeals.rejected, (state) => {
       state.loading = false;
+    });
+    builder.addCase(fetchMealsByRestaurant.fulfilled, (state, action) => {
+      state.data = action.payload; // Update the state with the payload
     });
   },
 });
