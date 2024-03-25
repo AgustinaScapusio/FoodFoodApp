@@ -37,7 +37,7 @@ export function Search() {
             <input
                 type="text"
                 placeholder="Search restaurant or meal..."
-                className="w-96 p-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-10 ml-5"
+                className="w-3/4 p-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-10 flex justify-center mx-auto"
                 onChange={handleSearch}
             />
             <div>
