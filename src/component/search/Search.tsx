@@ -1,43 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store";
-import { Restaurant, Meal } from "../../types/types";
+import { Restaurant, MealType } from "../../types/types";
 import { fetchRestaurant } from "../../http/RestaurantHttp";
 import { fetchMeals } from "../../http/MealFetch";
 import { RestaurantCard } from "../restaurant/UI/RestaurantCard";
 import { MealCard } from "../meal/UI/MealCard";
 
 export function Search() {
-    const { data: restaurantData, loading: restaurantLoading } = useAppSelector((state) => state.restaurants);
-    const { data: mealData, loading: mealLoading } = useAppSelector((state) => state.meals);
-    const restaurantDispatch = useAppDispatch();
-    const mealDispatch = useAppDispatch();
-    const [filteredRestaurants, setFilteredRestaurants] = useState<Restaurant[]>([]);
-    const [filteredMeals, setFilteredMeals] = useState<Meal[]>([]);
+  const { data: restaurantData, loading: restaurantLoading } = useAppSelector(
+    (state) => state.restaurants,
+  );
+  const { data: mealData, loading: mealLoading } = useAppSelector(
+    (state) => state.meals,
+  );
+  const restaurantDispatch = useAppDispatch();
+  const mealDispatch = useAppDispatch();
+  const [filteredRestaurants, setFilteredRestaurants] = useState<Restaurant[]>(
+    [],
+  );
+  const [filteredMeals, setFilteredMeals] = useState<MealType[]>([]);
 
-    useEffect(() => {
-        restaurantDispatch(fetchRestaurant());
-        mealDispatch(fetchMeals());
-    }, [restaurantDispatch, mealDispatch]);
+  useEffect(() => {
+    restaurantDispatch(fetchRestaurant());
+    mealDispatch(fetchMeals());
+  }, [restaurantDispatch, mealDispatch]);
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const search = e.target.value.toLowerCase();
-        const filteredRestaurants = restaurantData.filter((restaurant) =>
-            restaurant.name.toLowerCase().startsWith(search)
-        );
-        setFilteredRestaurants(filteredRestaurants);
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const search = e.target.value.toLowerCase();
+    const filteredRestaurants = restaurantData.filter((restaurant) =>
+      restaurant.name.toLowerCase().startsWith(search),
+    );
+    setFilteredRestaurants(filteredRestaurants);
 
-        const filteredMeals = mealData.filter((meal) =>
-            meal.name.toLowerCase().startsWith(search)
-        );
-        setFilteredMeals(filteredMeals);
-    };
+    const filteredMeals = mealData.filter((meal) =>
+      meal.name.toLowerCase().startsWith(search),
+    );
+    setFilteredMeals(filteredMeals);
+  };
 
     return (
         <>
             <input
                 type="text"
                 placeholder="Search restaurant or meal..."
-                className="w-3/4 p-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-10 flex justify-center mx-auto"
+                className="w-3/4 p-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 mt-10 ml-5"
                 onChange={handleSearch}
             />
             <div>
