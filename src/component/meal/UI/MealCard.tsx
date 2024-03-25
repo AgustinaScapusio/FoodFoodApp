@@ -22,7 +22,7 @@ export function MealCard({ meal }: { meal: MealType }) {
       <img
         src={meal.mealImage}
         alt={meal.name}
-        className={"object-cover h-[240px] rounded-t"}
+        className={"object-cover h-[200px] rounded-t"}
       />
       <div className={"p-2"}>
         <p className={"text-4xl font-extralight"}>{meal.name}</p>
