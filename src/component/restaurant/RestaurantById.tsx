@@ -31,18 +31,27 @@ export function RestaurantById() {
             alt={restaurant?.name}
             className={"object-cover w-full h-[300px] pt-0"}
           />
-          <div className={"border-1 border-gray-300 p-2 bg-stone-200 shadow-lg"}>
-          <p className={"text-4xl font-light text-center  mb-2"}>{restaurant?.name}</p>
-          <p className={"text-xl font-light text-center mb-2"}>{restaurant?.description}</p>
-          <p className={"text-xl font-light text-center mb-2"}>{restaurant?.category}</p>
-          <p className="text-xl font-light text-center mb-2">
-            {restaurant?.address}</p>
+          <div
+            className={"border-1 border-gray-300 p-2 bg-stone-200 shadow-lg"}
+          >
+            <p className={"text-4xl font-light text-center mb-2"}>
+              {restaurant?.name}
+            </p>
+            <p className={"text-xl font-light text-center mb-2"}>
+              {restaurant?.description}
+            </p>
+            <p className={"text-xl font-light text-center mb-2"}>
+              {restaurant?.category}
+            </p>
+            <p className="text-xl font-light text-center mb-2">
+              {restaurant?.address}
+            </p>
           </div>
         </div>
       )}
-        <div className="flex gap-4 flex-wrap p-1 justify-center mt-10">
-      <Meal restaurantId={restaurantId} />
-        </div>
+      <div className="flex gap-4 flex-wrap p-1 justify-center mt-10">
+        <Meal restaurantId={restaurantId} />
+      </div>
     </div>
   );
 }
