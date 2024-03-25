@@ -16,13 +16,13 @@ export function MealCard({ meal }: { meal: MealType }) {
   return (
     <div
       className={
-        "max-w-96  box shadow flex flex-col justify-between gap-6 cursor-pointer bg-white rounded-md"
+        "max-w-96 shadow flex flex-col justify-between gap-6 cursor-pointer bg-white rounded-md"
       }
     >
       <img
         src={meal.mealImage}
         alt={meal.name}
-        className={"object-cover h-[240px]"}
+        className={"object-cover h-[240px] rounded-t"}
       />
       <div className={"p-2"}>
         <p className={"text-4xl font-extralight"}>{meal.name}</p>
@@ -32,7 +32,7 @@ export function MealCard({ meal }: { meal: MealType }) {
       </div>
       <button
         className={
-          "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-b"
         }
         onClick={handleCart}
       >
