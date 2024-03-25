@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { postOrder } from '../http/OrderHttp';
-import { Order } from '../types/types';
+import { CreateOrderProps, Order } from '../types/types';
 
 interface CartState {
   data: Order[];
@@ -16,13 +16,13 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addQuantity: (state, action: PayloadAction<Order>) => {
+    addQuantity: (state, action: PayloadAction<CreateOrderProps>) => {
       const index = state.data.findIndex((item) => item.mealId === action.payload.mealId);
       if (index !== -1) {
         state.data[index].quantity += 1;
       }
     },
-    reduceQuantity: (state, action: PayloadAction<Order>) => {
+    reduceQuantity: (state, action: PayloadAction<CreateOrderProps>) => {
       const index = state.data.findIndex((item) => item.mealId === action.payload.mealId);
       if (index !== -1) {
         state.data[index].quantity -= 1;
@@ -31,12 +31,17 @@ export const cartSlice = createSlice({
         }
       }
     },
-    addMealToCart: (state, action: PayloadAction<Order>) => {
+    addMealToCart: (state, action: PayloadAction<CreateOrderProps>) => {
       const index = state.data.findIndex((item) => item.mealId === action.payload.mealId);
       if (index !== -1) {
         state.data[index].quantity += 1;
       } else {
-        state.data.push(action.payload);
+        const newOrder: Order = {
+          id: Math.random(),
+          mealId: action.payload.mealId,
+          quantity: 1,
+        };
+        state.data.push(newOrder);
       }
     },
   },
