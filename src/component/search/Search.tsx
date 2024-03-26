@@ -25,18 +25,18 @@ export function Search() {
     mealDispatch(fetchMeals());
   }, [restaurantDispatch, mealDispatch]);
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const search = e.target.value.toLowerCase();
     const filteredRestaurants = restaurantData.filter((restaurant) =>
-      restaurant.name.toLowerCase().startsWith(search),
+        restaurant.name.toLowerCase().includes(search),
     );
     setFilteredRestaurants(filteredRestaurants);
 
     const filteredMeals = mealData.filter((meal) =>
-      meal.name.toLowerCase().startsWith(search),
+        meal.name.toLowerCase().includes(search),
     );
     setFilteredMeals(filteredMeals);
-  };
+};
 
   return (
     <>
@@ -55,7 +55,7 @@ export function Search() {
         ) : (
           <>
             {filteredRestaurants.length > 0 && (
-              <h2 className="mt-10 mb-10 ml-4 mr-4 text-2xl">Restaurants</h2>
+              <h2 className="mt-10 mb-10 ml-10 mr-5 text-3xl">Restaurants</h2>
             )}
 
             <div className="flex gap-4 flex-wrap p-1 justify-center mt-10">
@@ -74,7 +74,7 @@ export function Search() {
         ) : (
           <>
             {filteredMeals.length > 0 && (
-              <h2 className="mt-10 mb-10 ml-4 mr-4 text-2xl">Meals</h2>
+              <h2 className="mt-10 mb-10 ml-10 mr-5 text-3xl">Meals</h2>
             )}
             <div className="flex gap-4 flex-wrap p-1 justify-center mt-10">
               <div className={"grid gap-4 lg:grid-cols-3 md:grid-cols-2"}>

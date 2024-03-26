@@ -8,6 +8,7 @@ export function Cart({ closeModal }: CartProps ){
   const cartItems = useAppSelector((state) => state.cart.data);
   const meal = useAppSelector((state) => state.meals.data);
   const mealData = meal.filter((meal) => cartItems.some((item) => item.id === meal.id))[0];
+
   return (
     <div className="modal">
       <div className="modal-content">
