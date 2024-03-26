@@ -22,15 +22,8 @@ export function Modal(props: ModalProps) {
     }
   }, [props.open]);
 
-  const rootModal = document.getElementById("modal");
-  if (!rootModal) {
-    return null;
-  }
-
   return createPortal(
-    <dialog ref={dialog} className={props.className} onClose={props.onClose}>
-      {props.children}
-    </dialog>,
-    rootModal,
+    <dialog className={props.className}>{props.children}</dialog>,
+    document.getElementById("modal")!,
   );
 }
