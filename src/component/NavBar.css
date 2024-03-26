@@ -37,14 +37,15 @@
 }
 .navbar-list a:hover{
     color: #35E1FF;
-} 
+}
 .cart{
     margin:0 30px;
     padding: 10px 15px;
     background-color: #35E1FF;
-    border: none;
+    border: 1px solid;
     border-radius: 5px;
     font-size: 1rem;
+    white-space: nowrap;
 }
 .cart:hover{
     background-color: white;
@@ -52,11 +53,9 @@
     border: 1px solid #35E1FF;
     transition: 0.2s ease-in-out;
 }
-@media (max-width: 700px){
+@media (max-width: 800px){
     .navbar{
         flex-direction: column;
-        height: 100%;
-        width: 100%;
     }
     .logo-container h1{
         font-size: 2rem;

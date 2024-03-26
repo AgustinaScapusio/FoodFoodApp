@@ -12,7 +12,7 @@ export function Restaurants() {
   }, [restaurantDispatch]);
 
   return (
-    <div className="flex gap-4 flex-wrap p-1 justify-center mt-10">
+    <div className="flex gap-4 flex-wrap p-1 justify-center my-10 mx-3">
       <div className={"grid gap-4 lg:grid-cols-3 md:grid-cols-2"}>
         {loading ? (
           <p>Loading...........</p>
