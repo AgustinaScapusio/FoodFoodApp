@@ -2,22 +2,24 @@ import { Modal } from "./CartModal.tsx";
 import { useAppSelector } from "../../store";
 
 export function Cart() {
-  const cart = useAppSelector((state) => state.cart.data);
+  const cart = useAppSelector((state) => state.cart);
   const meal = useAppSelector((state) => state.meals.data);
-
-  const mealData = meal.filter((meal) =>
-    cart.some((item) => item.mealId === meal.id),
-  );
 
   function handleClose() {}
 
   return (
-    <Modal className={"bg-gray-600 h-60 w-4"} onClose={handleClose} open={true}>
+    <Modal className={" "} onClose={handleClose} open={true}>
       <h2>Your Cart</h2>
       <div>
-        {cart.data.map((item) => (
-          <p>{item.mealId}</p>
-        ))}
+        {cart.data.map((item) => {
+          const mealItem = meal.find((meal) => meal.id === item.mealId);
+          return (
+            <div key={item.mealId}>
+              <p>{mealItem?.name}</p>
+              <p>{item.quantity}</p>
+            </div>
+          );
+        })}
       </div>
     </Modal>
   );
