@@ -49,3 +49,10 @@ export type CreateOrderType = {
   userId: number;
   isDelivered: boolean;
 };
+
+export type UserType = {
+  id : number;
+  userName : string;
+  password : string;
+  salt : string;
+}

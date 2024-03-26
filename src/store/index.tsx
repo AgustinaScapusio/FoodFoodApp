@@ -3,12 +3,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import { mealSlice } from "./mealSlice.tsx";
 import { restaurantSlice } from "./restaurantSlice.tsx";
 import { cartSlice } from "./cartSlice.tsx";
+import { userSlice } from "./userSlice.tsx";
 
 export const store = configureStore({
   reducer: {
     meals: mealSlice.reducer,
     cart: cartSlice.reducer,
     restaurants: restaurantSlice.reducer,
+    users : userSlice.reducer,
   },
 });
 
