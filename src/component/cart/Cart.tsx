@@ -5,6 +5,7 @@ import { closeModal } from "../../store/userProgressSlice.tsx";
 export function Cart() {
   const cart = useAppSelector((state) => state.cart);
   const meal = useAppSelector((state) => state.meals.data);
+  const modal = useAppSelector((state) => state.modal.isVisible);
   const dispatch = useAppDispatch();
 
   function handleClose() {
@@ -12,8 +13,8 @@ export function Cart() {
   }
 
   return (
-    <Modal className={"bg-gray-600 h-60 w-80"}  open={true}>
-      <h2>Your Cart</h2>
+    <Modal className={"float-right bg-white w-96 h-dvh z-30"} open={modal}>
+      <h1 className={"text-xl font-bold text-center mb-4"}>Your Cart</h1>
       <div>
         {cart.data.map((item) => {
           const mealItem = meal.find((meal) => meal.id === item.mealId);
@@ -25,7 +26,13 @@ export function Cart() {
           );
         })}
       </div>
-      <button onClick={handleClose}>Close</button>
+      <button
+        className={"py-2 px-4 bg-red-500 text-white rounded"}
+        type={"button"}
+        onClick={handleClose}
+      >
+        Close
+      </button>
     </Modal>
   );
 }

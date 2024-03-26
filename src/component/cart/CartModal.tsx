@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useRef } from "react";
 
 type ModalProps = {
   children: ReactNode;
@@ -8,23 +8,18 @@ type ModalProps = {
 };
 
 export function Modal(props: ModalProps) {
-  const dialog = useRef<HTMLDialogElement>(null);
-
-  useEffect(() => {
-    const modal = dialog.current;
-
-    if (modal) {
-      if (props.open) {
-        modal.showModal();
-      }
-      return () => modal.close();
-    }
-  }, [props.open]);
+  const ref = useRef<HTMLDivElement>(null);
 
   return createPortal(
     props.open ? (
-      <div aria-modal={true} role={"modal"}>
-        {props.children}
+      <div
+        ref={ref}
+        className={"fixed top-0 left-0 z-20 w-full h-full flex justify-end "}
+      >
+        <div className={"fixed bg-black opacity-45 w-full h-full"} />
+        <div aria-modal={true} role={"dialog"} className={props.className}>
+          {props.children}
+        </div>
       </div>
     ) : null,
     document.getElementById("modal")!,

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/vectorstock_46110475_transparent.png";
 import { useAppDispatch, useAppSelector } from "../store";
 import "./NavBar.css";
-import { showModal } from "../store/userProgressSlice.tsx";
+import { toggleVisibility } from "../store/userProgressSlice.tsx";
 
 export default function NavBar() {
   const { data } = useAppSelector((state) => state.cart);
@@ -14,8 +14,9 @@ export default function NavBar() {
   const cartItems = useAppSelector((state) => state.cart.data);
 
   const modalDispatch = useAppDispatch();
+
   function handleClick() {
-    modalDispatch(showModal());
+    modalDispatch(toggleVisibility());
     console.log(cartItems);
   }
 
