@@ -1,20 +1,16 @@
-import { useAppSelector } from "../../store/index.tsx";
+import { useAppSelector } from "../../store";
 
-type CartProps = {
-  closeModal: () => void;
-};
-
-export function Cart({ closeModal }: CartProps ){
+export function Cart() {
   const cartItems = useAppSelector((state) => state.cart.data);
   const meal = useAppSelector((state) => state.meals.data);
-  const mealData = meal.filter((meal) => cartItems.some((item) => item.id === meal.id))[0];
+  const mealData = meal.filter((meal) =>
+    cartItems.some((item) => item.id === meal.id),
+  )[0];
 
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close" onClick={closeModal}>
-          &times;
-        </span>
+        <span className="close">&times;</span>
         <h2>Cart Items</h2>
         <ul>
           {cartItems.map((item) => (
