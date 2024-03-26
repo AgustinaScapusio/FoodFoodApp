@@ -1,36 +1,31 @@
-import { useAppSelector } from "../../store";
 import { Modal } from "./CartModal.tsx";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { closeModal } from "../../store/userProgressSlice.tsx";
 
 export function Cart() {
-  const cartItems = useAppSelector((state) => state.cart.data);
-  // const meal = useAppSelector((state) => state.meals.data);
-  // const mealData = meal.filter((meal) =>
-  //   cartItems.some((item) => item.id === meal.id),
-  // )[0];
+  const cart = useAppSelector((state) => state.cart);
+  const meal = useAppSelector((state) => state.meals.data);
+  const dispatch = useAppDispatch();
 
-  function handleClose() {}
-
-  console.log(cartItems);
+  function handleClose() {
+    dispatch(closeModal());
+  }
 
   return (
-    <Modal className={""} onClose={handleClose} open={true}>
-      <div className="modal-content">
-        <span className="close">&times;</span>
-        <h2>Cart Items</h2>
-        <ul>
-          {cartItems.map((item) => (
-            // <li key={item.id}>
-            <div>
-              {/*<span>{meal.name}</span>*/}
-              {/*<span>{mealData.price}</span>*/}
-              {/* <button onClick={() => handleAddItem(item)}>+</button> */}
-              <span>{item.quantity}</span>
-              {/* <button onClick={() => handleRemoveItem(item)}>-</button> */}
+    <Modal className={"bg-gray-600 h-60 w-80"}  open={true}>
+      <h2>Your Cart</h2>
+      <div>
+        {cart.data.map((item) => {
+          const mealItem = meal.find((meal) => meal.id === item.mealId);
+          return (
+            <div key={item.mealId}>
+              <p>{mealItem?.name}</p>
+              <p>{item.quantity}</p>
             </div>
-            // </li>
-          ))}
-        </ul>
+          );
+        })}
       </div>
+      <button onClick={handleClose}>Close</button>
     </Modal>
   );
 }

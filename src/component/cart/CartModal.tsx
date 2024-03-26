@@ -5,7 +5,6 @@ type ModalProps = {
   children: ReactNode;
   className: string;
   open: boolean;
-  onClose: () => void;
 };
 
 export function Modal(props: ModalProps) {
@@ -22,15 +21,10 @@ export function Modal(props: ModalProps) {
     }
   }, [props.open]);
 
-  const rootModal = document.getElementById("modal");
-  if (!rootModal) {
-    return null;
-  }
-
   return createPortal(
-    <dialog ref={dialog} className={props.className} onClose={props.onClose}>
+    <dialog ref={dialog} className={props.className}>
       {props.children}
     </dialog>,
-    rootModal,
+    document.getElementById("modal")!,
   );
 }
