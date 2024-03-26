@@ -23,9 +23,11 @@ export function Modal(props: ModalProps) {
   }, [props.open]);
 
   return createPortal(
-    <dialog ref={dialog} className={props.className}>
-      {props.children}
-    </dialog>,
+    props.open ? (
+      <div aria-modal={true} role={"modal"}>
+        {props.children}
+      </div>
+    ) : null,
     document.getElementById("modal")!,
   );
 }
