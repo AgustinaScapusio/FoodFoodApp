@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { Restaurant } from "../../../types/types";
+import { RestaurantType } from "../../../types/types";
 
-export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
+export function RestaurantCard({ restaurant }: { restaurant: RestaurantType }) {
   const navigate = useNavigate();
 
   const handlerClick = () => {

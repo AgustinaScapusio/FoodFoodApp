@@ -1,6 +1,6 @@
 import { MealType } from "../../../types/types";
 import { useAppDispatch } from "../../../store";
-import { addMealToCart } from "../../../store/cartSlice";
+import { addQuantity } from "../../../store/cartSlice";
 
 export function MealCard({ meal }: { meal: MealType }) {
   const dispatch = useAppDispatch();
@@ -8,10 +8,13 @@ export function MealCard({ meal }: { meal: MealType }) {
   const order = {
     mealId: meal.id,
     quantity: 1,
+    isDelivered: false,
+    userId: 1,
+    totalPrice: meal.price,
   };
 
   const handleCart = () => {
-  dispatch(addMealToCart(order));
+    dispatch(addQuantity(order));
   };
   return (
     <div

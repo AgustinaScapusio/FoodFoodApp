@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { CreateRestaurantProps, Restaurant } from "../types/types.ts";
+import { CreateRestaurantType, RestaurantType } from "../types/types.ts";
 
 export const fetchRestaurant = createAsyncThunk(
   "get/restaurants",
-  async (): Promise<[Restaurant]> => {
+  async (): Promise<[RestaurantType]> => {
     const response = await fetch("https://localhost:7081/Restaurant");
     return await response.json();
   },
@@ -11,7 +11,7 @@ export const fetchRestaurant = createAsyncThunk(
 
 export const fetchRestaurantById = createAsyncThunk(
   "get/restaurantsById",
-  async (id: number): Promise<Restaurant> => {
+  async (id: number): Promise<RestaurantType> => {
     const response = await fetch(`https://localhost:7081/Restaurant/${id}`);
     return await response.json();
   },
@@ -19,7 +19,7 @@ export const fetchRestaurantById = createAsyncThunk(
 
 export const createRestaurant = createAsyncThunk(
   "post/restaurant",
-  async (restaurant: CreateRestaurantProps): Promise<Restaurant> => {
+  async (restaurant: CreateRestaurantType): Promise<RestaurantType> => {
     const response = await fetch("https://localhost:7081/Restaurant", {
       method: "POST",
       headers: {
@@ -38,8 +38,8 @@ export const updateRestaurant = createAsyncThunk(
     restaurant,
   }: {
     id: number;
-    restaurant: CreateRestaurantProps;
-  }): Promise<Restaurant> => {
+    restaurant: CreateRestaurantType;
+  }): Promise<RestaurantType> => {
     const response = await fetch("https://localhost:7081/Restaurant", {
       method: "PUT",
       headers: {

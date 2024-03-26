@@ -1,9 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchRestaurant, fetchRestaurantById, createRestaurant,updateRestaurant } from '../http/RestaurantHttp';
-import { Restaurant } from '../types/types';
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  fetchRestaurant,
+  fetchRestaurantById,
+  createRestaurant,
+  updateRestaurant,
+} from "../http/RestaurantHttp";
+import { RestaurantType } from "../types/types";
 type RestaurantState = {
   loading: boolean;
-  data: Restaurant[];
+  data: RestaurantType[];
 };
 
 const initialState: RestaurantState = {
@@ -12,50 +17,49 @@ const initialState: RestaurantState = {
 };
 
 export const restaurantSlice = createSlice({
-    name:'restaurants',
-    initialState,
-    reducers: {},
-    extraReducers: (builder) =>{
-        builder.addCase(fetchRestaurant.pending,(state) =>{
-            state.loading = true;
-        });
-        builder.addCase(fetchRestaurant.fulfilled, (state,action) =>{
-            state.data = action.payload;
-            state.loading = false;
-        });
-        builder.addCase(fetchRestaurant.rejected, (state) =>{
-            state.loading = false;
-        });
-        builder.addCase(fetchRestaurantById.pending,(state) =>{
-            state.loading = true;
-        });
-        builder.addCase(fetchRestaurantById.fulfilled, (state,action) =>{
-            state.data = [action.payload];
-            state.loading = false;
-        });
-        builder.addCase(fetchRestaurantById.rejected, (state) =>{
-            state.loading = false;
-        });
-        builder.addCase(createRestaurant.pending,(state) =>{
-            state.loading = true;
-        });
-        builder.addCase(createRestaurant.fulfilled, (state,action) =>{
-            state.data = [action.payload];
-            state.loading = false;
-        });
-        builder.addCase(createRestaurant.rejected, (state) =>{
-            state.loading = false;
-        });
-        builder.addCase(updateRestaurant.pending,(state) =>{
-            state.loading = true;
-        });
-        builder.addCase(updateRestaurant.fulfilled, (state,action) =>{
-            state.data = [action.payload];
-            state.loading = false;
-        });
-        builder.addCase(updateRestaurant.rejected, (state) =>{
-            state.loading = false;
-        });
-    },
-
+  name: "restaurants",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchRestaurant.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchRestaurant.fulfilled, (state, action) => {
+      state.data = action.payload;
+      state.loading = false;
+    });
+    builder.addCase(fetchRestaurant.rejected, (state) => {
+      state.loading = false;
+    });
+    builder.addCase(fetchRestaurantById.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchRestaurantById.fulfilled, (state, action) => {
+      state.data = [action.payload];
+      state.loading = false;
+    });
+    builder.addCase(fetchRestaurantById.rejected, (state) => {
+      state.loading = false;
+    });
+    builder.addCase(createRestaurant.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(createRestaurant.fulfilled, (state, action) => {
+      state.data = [action.payload];
+      state.loading = false;
+    });
+    builder.addCase(createRestaurant.rejected, (state) => {
+      state.loading = false;
+    });
+    builder.addCase(updateRestaurant.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(updateRestaurant.fulfilled, (state, action) => {
+      state.data = [action.payload];
+      state.loading = false;
+    });
+    builder.addCase(updateRestaurant.rejected, (state) => {
+      state.loading = false;
+    });
+  },
 });

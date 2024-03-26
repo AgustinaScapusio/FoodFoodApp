@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { postOrder } from '../http/OrderHttp';
-import { CreateOrderProps, Order } from '../types/types';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { postOrder } from "../http/OrderHttp";
+import { CreateOrderType } from "../types/types";
 
 interface CartState {
-  data: Order[];
+  data: CreateOrderType[];
   loading: boolean;
 }
 
@@ -13,35 +13,37 @@ const initialState: CartState = {
 };
 
 export const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
-    addQuantity: (state, action: PayloadAction<CreateOrderProps>) => {
-      const index = state.data.findIndex((item) => item.mealId === action.payload.mealId);
-      if (index !== -1) {
-        state.data[index].quantity += 1;
-      }
-    },
-    reduceQuantity: (state, action: PayloadAction<CreateOrderProps>) => {
-      const index = state.data.findIndex((item) => item.mealId === action.payload.mealId);
-      if (index !== -1) {
-        state.data[index].quantity -= 1;
-        if (state.data[index].quantity === 0) {
-          state.data = state.data.filter((item) => item.mealId !== action.payload.mealId);
-        }
-      }
-    },
-    addMealToCart: (state, action: PayloadAction<CreateOrderProps>) => {
-      const index = state.data.findIndex((item) => item.mealId === action.payload.mealId);
+    addQuantity: (state, action: PayloadAction<CreateOrderType>) => {
+      const index = state.data.findIndex(
+        (item) => item.mealId === action.payload.mealId,
+      );
       if (index !== -1) {
         state.data[index].quantity += 1;
       } else {
-        const newOrder: Order = {
-          id: Math.random(),
+        const newOrder: CreateOrderType = {
           mealId: action.payload.mealId,
+          isDelivered: false,
+          userId: 1,
+          totalPrice: 1,
           quantity: 1,
         };
         state.data.push(newOrder);
+      }
+    },
+    reduceQuantity: (state, action: PayloadAction<CreateOrderType>) => {
+      const index = state.data.findIndex(
+        (item) => item.mealId === action.payload.mealId,
+      );
+      if (index !== -1) {
+        state.data[index].quantity -= 1;
+        if (state.data[index].quantity === 0) {
+          state.data = state.data.filter(
+            (item) => item.mealId !== action.payload.mealId,
+          );
+        }
       }
     },
   },
@@ -59,7 +61,6 @@ export const cartSlice = createSlice({
   },
 });
 
-
-export const { addMealToCart, addQuantity, reduceQuantity } = cartSlice.actions;
+export const { addQuantity, reduceQuantity } = cartSlice.actions;
 
 export default cartSlice.reducer;

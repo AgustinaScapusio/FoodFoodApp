@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store";
-import { Restaurant, MealType } from "../../types/types";
+import { RestaurantType, MealType } from "../../types/types";
 import { fetchRestaurant } from "../../http/RestaurantHttp";
 import { fetchMeals } from "../../http/MealHttp";
 import { RestaurantCard } from "../restaurant/UI/RestaurantCard";
@@ -15,9 +15,9 @@ export function Search() {
   );
   const restaurantDispatch = useAppDispatch();
   const mealDispatch = useAppDispatch();
-  const [filteredRestaurants, setFilteredRestaurants] = useState<Restaurant[]>(
-    [],
-  );
+  const [filteredRestaurants, setFilteredRestaurants] = useState<
+    RestaurantType[]
+  >([]);
   const [filteredMeals, setFilteredMeals] = useState<MealType[]>([]);
 
   useEffect(() => {
@@ -25,18 +25,18 @@ export function Search() {
     mealDispatch(fetchMeals());
   }, [restaurantDispatch, mealDispatch]);
 
-const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const search = e.target.value.toLowerCase();
     const filteredRestaurants = restaurantData.filter((restaurant) =>
-        restaurant.name.toLowerCase().includes(search),
+      restaurant.name.toLowerCase().includes(search),
     );
     setFilteredRestaurants(filteredRestaurants);
 
     const filteredMeals = mealData.filter((meal) =>
-        meal.name.toLowerCase().includes(search),
+      meal.name.toLowerCase().includes(search),
     );
     setFilteredMeals(filteredMeals);
-};
+  };
 
   return (
     <>

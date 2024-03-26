@@ -9,7 +9,7 @@ export type MealType = {
   allergens: string;
 };
 
-export type Restaurant = {
+export type RestaurantType = {
   id: number;
   name: string;
   description: string;
@@ -20,7 +20,8 @@ export type Restaurant = {
   openingTime: Date;
   isOpen: boolean;
 };
-export type CreateRestaurantProps = {
+
+export type CreateRestaurantType = {
   name: string;
   description: string;
   image: string;
@@ -30,12 +31,21 @@ export type CreateRestaurantProps = {
   openingTime: Date;
   isOpen: boolean;
 };
-export type Order = {
+
+export type OrderType = {
   id: number;
   mealId: number;
   quantity: number;
+  date: Date;
+  totalPrice: number;
+  userId: number;
+  isDelivered: boolean;
 };
-export type CreateOrderProps = {
+
+export type CreateOrderType = {
   mealId: number;
   quantity: number;
+  totalPrice: number;
+  userId: number;
+  isDelivered: boolean;
 };
