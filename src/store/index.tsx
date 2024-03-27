@@ -6,6 +6,7 @@ import { cartSlice } from "./cartSlice.tsx";
 import { userSlice } from "./userSlice.tsx";
 import { userProgressSlice } from "./userProgressSlice.tsx";
 import { loginSlice } from "./loginSlice.tsx";
+import { registerSlice } from "./registerSlice.tsx";
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     modal: userProgressSlice.reducer,
     users: userSlice.reducer,
     auth: loginSlice.reducer,
+    register: registerSlice.reducer,
   },
 });
 
