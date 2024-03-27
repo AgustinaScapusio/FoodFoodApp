@@ -1,4 +1,4 @@
-import { UserType } from "../../../types/types";
+import { UserType } from "../../../util/types";
 
 export function ProfileCard(profileData: UserType) {
   return (

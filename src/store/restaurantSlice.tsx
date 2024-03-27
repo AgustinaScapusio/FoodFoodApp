@@ -5,7 +5,7 @@ import {
   createRestaurant,
   updateRestaurant,
 } from "../http/RestaurantHttp";
-import { RestaurantType } from "../types/types";
+import { RestaurantType } from "../util/types";
 type RestaurantState = {
   loading: boolean;
   data: RestaurantType[];

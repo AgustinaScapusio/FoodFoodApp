@@ -2,9 +2,9 @@
 
 // export mealSlice = createSlice({})
 
-import { MealType } from "../types/types";
+import { MealType } from "../util/types";
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchMeals, fetchMealsByRestaurant } from "../http/MealHttp"
+import { fetchMeals, fetchMealsByRestaurant } from "../http/MealHttp";
 
 type MealState = {
   loading: boolean;

@@ -1,4 +1,4 @@
-import { MealType } from "../../../types/types";
+import { MealType } from "../../../util/types";
 import { useAppDispatch } from "../../../store";
 import { addQuantity } from "../../../store/cartSlice";
 

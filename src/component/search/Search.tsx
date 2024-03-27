@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store";
-import { RestaurantType, MealType } from "../../types/types";
+import { RestaurantType, MealType } from "../../util/types";
 import { fetchRestaurant } from "../../http/RestaurantHttp";
 import { fetchMeals } from "../../http/MealHttp";
 import { RestaurantCard } from "../restaurant/UI/RestaurantCard";

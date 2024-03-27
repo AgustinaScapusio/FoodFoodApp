@@ -1,10 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { MealType } from "../types/types.ts";
+import { MealType } from "../util/types.ts";
+import { backendURL } from "../util/consts.ts";
 
 export const fetchMeals = createAsyncThunk(
   "get/meals",
   async (): Promise<[MealType]> => {
-    const response = await fetch("https://localhost:7081/Meal");
+    const response = await fetch(`${backendURL}/Meal`);
     return await response.json();
   },
 );
@@ -12,7 +13,7 @@ export const fetchMeals = createAsyncThunk(
 export const fetchMealsById = createAsyncThunk(
   "get/mealsById",
   async (id: number): Promise<MealType> => {
-    const response = await fetch(`https://localhost:7081/Meal/${id}`);
+    const response = await fetch(`${backendURL}/Meal/${id}`);
     return await response.json();
   },
 );
@@ -20,7 +21,7 @@ export const fetchMealsById = createAsyncThunk(
 export const fetchMealsByRestaurant = createAsyncThunk(
   "get/mealsByRestaurant",
   async (id: number): Promise<[MealType]> => {
-    const response = await fetch(`https://localhost:7081/Meal/mealRest/${id}`);
+    const response = await fetch(`${backendURL}/Meal/mealRest/${id}`);
     return await response.json();
   },
 );
@@ -28,7 +29,7 @@ export const fetchMealsByRestaurant = createAsyncThunk(
 export const createMeal = createAsyncThunk(
   "post/createMeal",
   async (createMeal: Omit<MealType, "id">): Promise<MealType> => {
-    const response = await fetch("https://localhost:7081/Meal", {
+    const response = await fetch(`${backendURL}/Meal`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
