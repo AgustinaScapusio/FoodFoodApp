@@ -1,4 +1,4 @@
-import { UserType } from "../../../types/types";
+import { UserType } from "../../../util/types";
 import profilepic from "../../../assets/asdadsadsa.jpg"
 
 export function ProfileCard(profileData: UserType) {
@@ -10,7 +10,7 @@ export function ProfileCard(profileData: UserType) {
           src={profilepic}
           alt={"gottem"}
           ></img>
-        <h1>{profileData.userName}</h1>
+        <h1>{profileData.username}</h1>
         </div>
     </>
   );

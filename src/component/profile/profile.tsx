@@ -41,8 +41,7 @@ export function Profile() {
               <ProfileCard
                 id={user.id}
                 password={user.password}
-                salt={user.salt}
-                userName={user.userName}
+                username={user.username}
               />
             ))
           ) : showInfo === 1 ? (
