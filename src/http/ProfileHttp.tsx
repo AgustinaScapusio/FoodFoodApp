@@ -3,7 +3,7 @@ import { UserType } from "../util/types";
 import { backendURL } from "../util/consts.ts";
 
 export const fetchUsers = createAsyncThunk(
-  "get/meals",
+  "get/User",
   async (): Promise<[UserType]> => {
     const response = await fetch(`${backendURL}/User`);
     return await response.json();

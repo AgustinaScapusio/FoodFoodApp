@@ -38,11 +38,11 @@ export function Profile() {
         <div style={{ paddingLeft: "10%", paddingTop: "50px" }}>
           {showInfo === 0 ? (
             data.map((user) => (
-              <ProfileCard
+              <ProfileCard key={user.id}
                 id={user.id}
                 password={user.password}
                 username={user.username}
-                
+
               />
             ))
           ) : showInfo === 1 ? (
