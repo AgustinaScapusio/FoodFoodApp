@@ -8,7 +8,7 @@ type registerState = {
 };
 
 const initialState: registerState = {
-  user: { userName: "", password: "" },
+  user: { username: "", password: "" },
   loading: false,
 };
 
@@ -22,7 +22,7 @@ export const registerSlice = createSlice({
     });
     builder.addCase(postUser.fulfilled, (state, action) => {
       state.loading = false;
-      state.user.userName = action.payload.userName;
+      state.user.username = action.payload.username;
       state.user.password = action.payload.password;
     });
     builder.addCase(postUser.rejected, (state) => {
