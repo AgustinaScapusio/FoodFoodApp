@@ -1,5 +1,7 @@
 export function LoginPage() {
-	return (
-		<></>
-	);
+  return (
+    <>
+      <p>loggignning</p>
+    </>
+  );
 }
