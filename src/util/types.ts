@@ -52,6 +52,11 @@ export type CreateOrderType = {
 
 export type UserType = {
   id: number;
+  username: string;
+  password: string;
+};
+
+export type LoginType = {
   username: string | undefined;
   password: string | undefined;
 };
