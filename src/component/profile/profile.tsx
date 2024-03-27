@@ -42,6 +42,7 @@ export function Profile() {
                 id={user.id}
                 password={user.password}
                 username={user.username}
+                
               />
             ))
           ) : showInfo === 1 ? (
