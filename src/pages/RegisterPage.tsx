@@ -18,8 +18,8 @@ export function RegisterPage() {
     console.log({ usernameRef, passwordRef, confirmPasswordRef });
     dispatch(
       postUser({
-        username: usernameRef.current?.value,
-        password: passwordRef.current?.value,
+        username: usernameRef.current?.value ?? "",
+        password: passwordRef.current?.value ?? "",
       }),
     );
   };

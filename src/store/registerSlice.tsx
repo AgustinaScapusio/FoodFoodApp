@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserType } from "../util/types.ts";
+import { LoginType} from "../util/types.ts";
 import { postUser } from "../http/RegisterHttp.tsx";
 
 type registerState = {
-  user: Omit<UserType, "id">;
+  user: LoginType;
   loading: boolean;
 };
 
