@@ -2,14 +2,19 @@ import { fetchUsers, fetchUsersById } from "../../http/ProfileHttp";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { ProfileCard } from "./UI/ProfileCard";
+import { useParams } from "react-router-dom";
 
 export function Profile() {
   const { data, loading } = useAppSelector((state) => state.users);
   const UserDispatch = useAppDispatch();
 
+	const {id} = useParams();
+
   useEffect(() => {
-    UserDispatch(fetchUsersById(1));
-  }, [UserDispatch]);
+    if(id !== null && id !== undefined){
+      UserDispatch(fetchUsersById(parseInt(id)));
+    }
+    }, [UserDispatch]);
 
   const [showInfo, setShowInfo] = useState<number>(0);
 
@@ -38,12 +43,11 @@ export function Profile() {
         <div style={{ paddingLeft: "10%", paddingTop: "50px" }}>
           {showInfo === 0 ? (
             data.map((user) => (
-              <ProfileCard key={user.id}
+                <ProfileCard key={user.id}
                 id={user.id}
                 password={user.password}
-                username={user.username}
-
-              />
+                userName={user.userName}
+                />
             ))
           ) : showInfo === 1 ? (
             <h1>abc</h1>
