@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchToken } from "../http/LoginHttp.tsx";
+import { fetchToken, postLogin } from "../http/LoginHttp.tsx";
 
 interface LoginState {
   loading: boolean;
@@ -32,7 +32,17 @@ export const loginSlice = createSlice({
       state.loading = false;
       state.expiresIn = action.payload.expiresIn;
     });
-
-    // builder.addCase(postLogin.fulfilled);
+    builder.addCase(postLogin.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(postLogin.rejected, (state) => {
+      state.loading = false;
+    });
+    builder.addCase(postLogin.fulfilled, (state, action) => {
+      state.accessToken = action.payload.accessToken;
+      state.userId = action.payload.userId;
+      state.loading = false;
+      state.expiresIn = action.payload.expiresIn;
+    });
   },
 });

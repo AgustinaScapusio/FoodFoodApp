@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { TokenType } from "../util/types.ts";
 import { backendURL } from "../util/consts.ts";
+
 export const postLogin = createAsyncThunk(
   "auth/login",
   async (loginRequest: { email: string; password: string }): Promise<TokenType> => {
