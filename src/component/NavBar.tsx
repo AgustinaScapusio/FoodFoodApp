@@ -45,7 +45,7 @@ export default function NavBar() {
           {accessToken ? (
             <li>
               <button className={"text-white hover:text-[#35E1FF]"} onClick={() => dispatch(signOut())}>
-                LogOut
+                Logout
               </button>
             </li>
           ) : (

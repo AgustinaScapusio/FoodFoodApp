@@ -1,6 +1,7 @@
 import { MealType } from "../../../util/types";
 import { useAppDispatch } from "../../../store";
 import { addQuantity } from "../../../store/cartSlice";
+import { Card } from "antd";
 
 export function MealCard({ meal }: { meal: MealType }) {
   const dispatch = useAppDispatch();
@@ -17,30 +18,34 @@ export function MealCard({ meal }: { meal: MealType }) {
     dispatch(addQuantity(order));
   };
   return (
-    <div
+    <Card
       className={
-        "max-w-96 shadow flex flex-col justify-between gap-6 cursor-pointer bg-white rounded-md"
+        "max-w-96 h-full shadow flex flex-col  cursor-pointer bg-white rounded-md custom-card"
       }
+      cover={
+        <img
+          src={meal.mealImage}
+          alt={meal.name}
+          className={"object-cover h-[200px] rounded-t"}
+        />
+      }
+      hoverable
+      actions={[
+        <button className={"text-xl h-14"} onClick={handleCart}>
+          Add to cart
+        </button>,
+      ]}
     >
-      <img
-        src={meal.mealImage}
-        alt={meal.name}
-        className={"object-cover h-[200px] rounded-t"}
-      />
-      <div className={"p-2"}>
-        <p className={"text-4xl font-extralight"}>{meal.name}</p>
-        <p className={"text-xl font-light"}>{meal.description}</p>
-        <p className={"text-xl font-light"}>Allergens: {meal.allergens}</p>
-        <p className={"text-xl font-light"}>{meal.price}</p>
+      <div className={"flex flex-col justify-between min-h-44"}>
+        <div className={"flex flex-col gap-2"}>
+          <p className={"text-4xl font-extralight"}>{meal.name}</p>
+          <p className={"text-xl font-light"}>{meal.description}</p>
+        </div>
+        <div>
+          <p className={"text-xl font-light"}>Allergens: {meal.allergens}</p>
+          <p className={"text-xl font-light"}>{meal.price}</p>
+        </div>
       </div>
-      <button
-        className={
-          "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-b"
-        }
-        onClick={handleCart}
-      >
-        Add to cart
-      </button>
-    </div>
+    </Card>
   );
 }
