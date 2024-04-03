@@ -6,7 +6,7 @@ import { toggleVisibility } from "../store/userProgressSlice.tsx";
 import { signOut } from "../store/loginSlice.tsx";
 
 export default function NavBar() {
-  const { accessToken } = useAppSelector((state) => state.auth);
+  const { accessToken,userId } = useAppSelector((state) => state.auth);
   const { data } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
   const total = data.reduce(
@@ -37,12 +37,14 @@ export default function NavBar() {
           <li>
             <Link to="/search">Search</Link>
           </li> 
+          {accessToken &&
           <li>
-            <Link to="/profile">Profile</Link>
+            <Link to={`/user/${userId}`}>Profile</Link>
           </li>
+          }
           {accessToken ? (
             <li>
-              <button className={"text-white"} onClick={() => dispatch(signOut())}>
+              <button className={"text-white hover:text-[#35E1FF]"} onClick={() => dispatch(signOut())}>
                 LogOut
               </button>
             </li>
