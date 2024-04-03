@@ -40,3 +40,5 @@ export const loginSlice = createSlice({
     });
   },
 });
+export { signOut };
+

@@ -3,10 +3,12 @@ import logo from "../assets/vectorstock_46110475_transparent.png";
 import { useAppDispatch, useAppSelector } from "../store";
 import "./NavBar.css";
 import { toggleVisibility } from "../store/userProgressSlice.tsx";
+import { signOut } from "../store/loginSlice.tsx";
 
 export default function NavBar() {
   const { accessToken } = useAppSelector((state) => state.auth);
   const { data } = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
   const total = data.reduce(
     (acc: number, item: { quantity: number }) => acc + item.quantity,
     0,
@@ -38,9 +40,17 @@ export default function NavBar() {
           <li>
             <Link to="/profile">Profile</Link>
           </li>
-          <li>
-            <Link to="/login">{accessToken ? "Logout" : "Login"}</Link>
-          </li>
+          {accessToken ? (
+            <li>
+              <button className={"text-white"} onClick={() => dispatch(signOut())}>
+                LogOut
+              </button>
+            </li>
+          ) : (
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          )}
           <button
             className="cart"
             onClick={handleClick}
