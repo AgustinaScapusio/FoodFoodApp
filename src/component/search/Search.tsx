@@ -17,8 +17,8 @@ export function Search() {
   const mealDispatch = useAppDispatch();
   const [filteredRestaurants, setFilteredRestaurants] = useState<
     RestaurantType[]
-  >([]);
-  const [filteredMeals, setFilteredMeals] = useState<MealType[]>([]);
+  >([...restaurantData]);
+  const [filteredMeals, setFilteredMeals] = useState<MealType[]>([...mealData]);
 
   useEffect(() => {
     restaurantDispatch(fetchRestaurant());
