@@ -1,5 +1,5 @@
 import { useRef, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { postLogin } from "../http/LoginHttp";
 import { useAppDispatch, useAppSelector } from "../store";
 
@@ -56,9 +56,9 @@ export function LoginPage() {
           >
             Sign In
           </button>
-          <a className="inline-block align-baseline font-bold text-sm text-blue-700 hover:text-blue-800" href="#">
+          <Link className="inline-block align-baseline font-bold text-sm text-blue-700 hover:text-blue-800" to="/forgot-password">
             Forgot Password?
-          </a>
+          </Link>
         </div>
         <div className="text-center mt-4">
           <p>Don't have an account?</p>
