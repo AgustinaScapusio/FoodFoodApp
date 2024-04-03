@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { postLogin, signOut } from "../http/LoginHttp.tsx";
+import { setToken } from "../util/localstorage.ts";
 
 interface LoginState {
   loading: boolean;
@@ -31,6 +32,8 @@ export const loginSlice = createSlice({
       state.userId = action.payload.userId;
       state.loading = false;
       state.expiresIn = action.payload.expiresIn;
+      setToken(action.payload.accessToken);
+      
     });
     builder.addCase(signOut.fulfilled, (state) => {
       state.loading = false;
