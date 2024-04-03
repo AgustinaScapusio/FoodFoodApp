@@ -35,7 +35,8 @@ export function RegisterPage() {
       <form onSubmit={handleSubmit} className="bg-gray-200 shadow-md rounded px-10 pt-8 pb-9">
         <div className="mb-6">
           <input
-            placeholder="Username"
+            required
+            placeholder="Email"
             name="username"
             ref={usernameRef}
             className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
@@ -43,6 +44,7 @@ export function RegisterPage() {
         </div>
         <div className="mb-6 relative">
           <input
+            required
             placeholder="Password"
             name="password"
             type={showPassword ? "text" : "password"}
@@ -63,6 +65,7 @@ export function RegisterPage() {
         </div>
         <div className="mb-6 relative">
           <input
+            required
             placeholder="Confirm Password"
             name="confirmPassword"
             type={showPassword ? "text" : "password"}
