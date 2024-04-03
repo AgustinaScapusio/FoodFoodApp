@@ -21,11 +21,6 @@ export const postLogin = createAsyncThunk(
   },
 );
 
-
-export const fetchToken = createAsyncThunk(
-  "auth/token",
-  async (): Promise<TokenType> => {
-    const response = await fetch(`${backendURL}/Login`);
-    return await response.json();
-  },
-);
+// export const signOut = createAsyncThunk('auth/signOut', async () => {
+//     removeToken();
+// });

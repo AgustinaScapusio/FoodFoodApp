@@ -5,6 +5,7 @@ import "./NavBar.css";
 import { toggleVisibility } from "../store/userProgressSlice.tsx";
 
 export default function NavBar() {
+  const { accessToken } = useAppSelector((state) => state.auth);
   const { data } = useAppSelector((state) => state.cart);
   const total = data.reduce(
     (acc: number, item: { quantity: number }) => acc + item.quantity,
@@ -33,9 +34,12 @@ export default function NavBar() {
           </li>
           <li>
             <Link to="/search">Search</Link>
-          </li>
+          </li> 
           <li>
             <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <Link to="/login">{accessToken ? "Logout" : "Login"}</Link>
           </li>
           <button
             className="cart"
