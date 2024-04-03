@@ -1,7 +1,7 @@
 import { MealType } from "../../../util/types";
 import { useAppDispatch } from "../../../store";
 import { addQuantity } from "../../../store/cartSlice";
-import { Button, Card } from "antd";
+import { Card } from "antd";
 
 export function MealCard({ meal }: { meal: MealType }) {
   const dispatch = useAppDispatch();
@@ -20,7 +20,7 @@ export function MealCard({ meal }: { meal: MealType }) {
   return (
     <Card
       className={
-        "max-w-96 h-full shadow flex flex-col  cursor-pointer bg-white rounded-md "
+        "max-w-96 h-full shadow flex flex-col  cursor-pointer bg-white rounded-md custom-card"
       }
       cover={
         <img
@@ -31,9 +31,9 @@ export function MealCard({ meal }: { meal: MealType }) {
       }
       hoverable
       actions={[
-        <Button className={""} onClick={handleCart}>
+        <button className={"text-xl h-14"} onClick={handleCart}>
           Add to cart
-        </Button>,
+        </button>,
       ]}
     >
       <div className={"flex flex-col justify-between min-h-44"}>
