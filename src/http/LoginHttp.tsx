@@ -1,14 +1,25 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { LoginType, TokenType } from "../util/types.ts";
+import { TokenType } from "../util/types.ts";
 import { backendURL } from "../util/consts.ts";
-
 export const postLogin = createAsyncThunk(
   "auth/login",
-  async (id: number): Promise<LoginType> => {
-    const response = await fetch(`${backendURL}/User/${id}`);
+  async (loginRequest: { email: string; password: string }): Promise<TokenType> => {
+    const response = await fetch(`${backendURL}/Login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginRequest),
+    });
+
+    if (!response.ok) {
+      throw new Error('Login failed');
+    }
+
     return await response.json();
   },
 );
+
 
 export const fetchToken = createAsyncThunk(
   "auth/token",
