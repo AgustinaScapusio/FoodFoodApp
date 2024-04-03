@@ -1,19 +1,27 @@
 import { FormEvent, useRef } from "react";
 import { useAppDispatch } from "../store";
 import { postLogin } from "../http/LoginHttp";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../store";
 
 export function LoginPage() {
   const dispatch = useAppDispatch();
   const passwordRef = useRef<HTMLInputElement>(null); 
   const emailRef = useRef<HTMLInputElement>(null); 
+  const { accessToken } = useAppSelector((state) => state.auth);
+  const navigate= useNavigate();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => { 
     e.preventDefault();
     const email = emailRef.current?.value || ""; 
     const password = passwordRef.current?.value || ""; 
-    dispatch(postLogin({ email, password }));
-    console.log("Login submitted");
-  };
+    dispatch(postLogin({ email, password }));  };
+
+  if (accessToken) {
+    navigate(`/`);
+  }
+
+
 
   return (
     <>

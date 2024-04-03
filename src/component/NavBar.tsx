@@ -53,10 +53,12 @@ export default function NavBar() {
               <Link to="/login">Login</Link>
             </li>
           )}
+          { accessToken &&
           <button
             className="cart"
             onClick={handleClick}
           >{`Cart (${total})`}</button>
+          }
         </ul>
       </div>
     </nav>
