@@ -10,8 +10,13 @@ export function ProfileCard(profileData: UserType) {
           src={profilepic}
           alt={"gottem"}
           ></img>
-        <h1>{profileData.username}</h1>
+        <h1>{profileData.id}</h1>
+        <h1>{profileData.userName}</h1>
         </div>
+      
+      <h1>Dine Favoritter!</h1>
+      
+      <h1>Bestill Igjen</h1>
     </>
   );
 }

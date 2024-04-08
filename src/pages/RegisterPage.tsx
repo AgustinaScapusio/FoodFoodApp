@@ -3,6 +3,7 @@ import { useAppDispatch } from "../store";
 import { postUser } from "../http/RegisterHttp";
 import eyeClosed from "../../public/eye-vector-closed.svg";
 import eyeOpen from "../../public/eye-vector-open.svg"
+import { useNavigate } from "react-router-dom";
 
 export function RegisterPage() {
   const usernameRef = useRef<HTMLInputElement>(null);
@@ -10,6 +11,7 @@ export function RegisterPage() {
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,6 +25,7 @@ export function RegisterPage() {
         password: passwordRef.current?.value ?? "",
       }),
     );
+    navigate("/login");
   };
 
   const toggleShowPassword = () => {
