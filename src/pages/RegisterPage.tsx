@@ -21,7 +21,7 @@ export function RegisterPage() {
     }
     dispatch(
       postUser({
-        username: usernameRef.current?.value ?? "",
+        userName: usernameRef.current?.value ?? "",
         password: passwordRef.current?.value ?? "",
       }),
     );

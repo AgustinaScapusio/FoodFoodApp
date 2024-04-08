@@ -1,10 +1,12 @@
 import { MealType } from "../../../util/types";
 import { useAppDispatch } from "../../../store";
 import { addQuantity } from "../../../store/cartSlice";
+import { useAppSelector } from "../../../store";
 import { Card } from "antd";
 
 export function MealCard({ meal }: { meal: MealType }) {
   const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.cart);
 
   const order = {
     mealId: meal.id,
@@ -12,11 +14,25 @@ export function MealCard({ meal }: { meal: MealType }) {
     isDelivered: false,
     userId: 1,
     totalPrice: meal.price,
+    restaurantId: meal.restaurantId,
   };
 
-  const handleCart = () => {
+ function handleCart() {
+  const existingCart = [...cart.data];
+  
+  if(existingCart.length === 0) {
     dispatch(addQuantity(order));
-  };
+  } else {
+    const isSameRestaurant = existingCart.every(item => item.restaurantId === order.restaurantId);
+    
+    if(isSameRestaurant) {
+      dispatch(addQuantity(order));
+    } else {
+      // Inform the user that they can only add meals from the same restaurant
+      alert("You can only add meals from the same restaurant to your cart.");
+    }
+  }
+}
   return (
     <Card
       className={
