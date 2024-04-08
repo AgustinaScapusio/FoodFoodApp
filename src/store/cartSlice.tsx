@@ -22,13 +22,16 @@ export const cartSlice = createSlice({
       );
       if (index !== -1) {
         state.data[index].quantity += 1;
+        // state.data[index].totalPrice = totalPrice;
+        // console.log(totalPrice);
       } else {
         const newOrder: CreateOrderType = {
           mealId: action.payload.mealId,
-          isDelivered: false,
-          userId: 1,
-          totalPrice: 1,
-          quantity: 1,
+          isDelivered: action.payload.isDelivered,
+          userId: action.payload.userId,
+          quantity: action.payload.quantity,
+          totalPrice: action.payload.totalPrice,
+          restaurantId: action.payload.restaurantId,
         };
         state.data.push(newOrder);
       }

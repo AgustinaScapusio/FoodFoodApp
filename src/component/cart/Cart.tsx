@@ -17,7 +17,11 @@ export function Cart() {
       <h1 className={"text-xl font-bold text-center mb-4"}>Your Cart</h1>
       <div>
         {cart.data.map((item) => {
-          const mealItem = meal.find((meal) => meal.id === item.mealId);
+          const mealItem = meal.find(
+            (meal) =>
+              meal.id === item.mealId &&
+              meal.restaurantId === item.restaurantId,
+          );
           return (
             <div key={item.mealId}>
               <p>{mealItem?.name}</p>

@@ -40,6 +40,7 @@ export type OrderType = {
   totalPrice: number;
   userId: number;
   isDelivered: boolean;
+  restaurantId: number;
 };
 
 export type CreateOrderType = {
@@ -48,6 +49,7 @@ export type CreateOrderType = {
   totalPrice: number;
   userId: number;
   isDelivered: boolean;
+  restaurantId: number;
 };
 
 export type UserType = {
