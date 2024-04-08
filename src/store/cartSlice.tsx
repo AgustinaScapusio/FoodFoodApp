@@ -22,8 +22,8 @@ export const cartSlice = createSlice({
       );
       if (index !== -1) {
         state.data[index].quantity += 1;
-        // state.data[index].totalPrice = totalPrice;
-        // console.log(totalPrice);
+        state.data[index].totalPrice =
+          state.data[index].totalPrice + state.data[index].quantity;
       } else {
         const newOrder: CreateOrderType = {
           mealId: action.payload.mealId,
