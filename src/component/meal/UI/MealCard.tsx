@@ -1,12 +1,12 @@
 import { MealType } from "../../../util/types";
-import { useAppDispatch } from "../../../store";
+import { useAppDispatch, useAppSelector } from "../../../store";
 import { addQuantity } from "../../../store/cartSlice";
-import { useAppSelector } from "../../../store";
-import { Card } from "antd";
+import { Button, Card } from "antd";
 
 export function MealCard({ meal }: { meal: MealType }) {
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart);
+  const { loading } = useAppSelector((state) => state.meals);
 
   const order = {
     mealId: meal.id,
@@ -35,6 +35,7 @@ export function MealCard({ meal }: { meal: MealType }) {
 }
   return (
     <Card
+      loading={loading}
       className={
         "max-w-96 h-full shadow flex flex-col  cursor-pointer bg-white rounded-md custom-card"
       }
@@ -47,9 +48,14 @@ export function MealCard({ meal }: { meal: MealType }) {
       }
       hoverable
       actions={[
-        <button className={"text-xl h-14"} onClick={handleCart}>
+        <Button
+          type={"primary"}
+          block
+          className={"text-xl h-14 border-0 rounded-t-none text-gray-600"}
+          onClick={handleCart}
+        >
           Add to cart
-        </button>,
+        </Button>,
       ]}
     >
       <div className={"flex flex-col justify-between min-h-44"}>
