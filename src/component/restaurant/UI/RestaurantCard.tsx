@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { RestaurantType } from "../../../util/types";
-import { Card } from "antd";
+import { Card, Carousel } from "antd";
 
 export function RestaurantCard({ restaurant }: { restaurant: RestaurantType }) {
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ export function RestaurantCard({ restaurant }: { restaurant: RestaurantType }) {
   };
 
   return (
+    <Carousel autoplay>
     <Card
       hoverable
       onClick={handlerClick}
@@ -29,5 +30,6 @@ export function RestaurantCard({ restaurant }: { restaurant: RestaurantType }) {
         <p className={"text-xl font-light"}>{restaurant.category}</p>
       </div>
     </Card>
+    </Carousel>
   );
 }
