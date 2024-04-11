@@ -6,26 +6,26 @@ import { useParams } from "react-router-dom";
 
 export function Profile() {
   const { data } = useAppSelector((state) => state.users);
-  const UserDispatch = useAppDispatch();
-
+  const dispatch = useAppDispatch();
   const { id } = useParams();
+
 
   useEffect(() => {
     if (id !== null && id !== undefined) {
-      UserDispatch(fetchUsersById(parseInt(id)));
+      dispatch(fetchUsersById(parseInt(id)));
     }
-  }, [UserDispatch]);
+  }, [dispatch, id]);
 
   const [showInfo, setShowInfo] = useState<number>(0);
 
   return (
     <>
       <div style={{ paddingLeft: "22%" }}>
-        <h1 className="text-2xl">Profil</h1>
+        <h1 className="text-2xl mt-10">Your Profile</h1>
 
-        <div className=" w-3/4 grid grid-rows-1 grid-flow-col gap-5 content-center">
+        <div className=" w-3/4 grid grid-rows-1 grid-flow-col gap-5 content-center mt-5">
           <a onClick={() => setShowInfo(0)} className="col-span-1">
-            Your-information
+            Your information
           </a>
           <a onClick={() => setShowInfo(1)} className="col-span-1">
             Payment method
@@ -51,9 +51,11 @@ export function Profile() {
               />
             ))
           ) : showInfo === 1 ? (
-            <h1>abc</h1>
+            showInfo === 1 && (
+              <h1>payment</h1>
+            ) 
           ) : showInfo === 2 ? (
-            <h1>wow</h1>
+           <div> wow </div>
           ) : showInfo === 3 ? (
             <h1>order history</h1>
           ) : (

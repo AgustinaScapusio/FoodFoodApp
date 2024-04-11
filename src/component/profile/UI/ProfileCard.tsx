@@ -6,17 +6,19 @@ export function ProfileCard(profileData: UserType) {
     <>
     <div>
       <img
-          className={"w-24 rounded-full shadow-lg"}
+          className={"w-24 rounded-full shadow-lg mb-10"}
           src={profilepic}
           alt={"gottem"}
           ></img>
-        <h1>{profileData.id}</h1>
-        <h1>{profileData.userName}</h1>
+      
+      <h1>
+        <span className="text-l text-cyan-500 font-semibold">Your email: </span>
+        {profileData.userName.toLowerCase()}
+      </h1>
         </div>
       
-      <h1>Dine Favoritter!</h1>
-      
-      <h1>Bestill Igjen</h1>
+      <h1 className="text-xl text-cyan-500 font-semibold">Your favorites!</h1>
+
     </>
   );
 }
