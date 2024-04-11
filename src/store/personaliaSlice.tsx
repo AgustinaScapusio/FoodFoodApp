@@ -38,6 +38,7 @@ export const personaliaSlice = createSlice({
             state,
         ) => {
             state.loading = false;
+            console.log("rejected");
         });
     }
 });
