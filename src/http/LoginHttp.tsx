@@ -21,7 +21,9 @@ export const postLogin = createAsyncThunk(
       throw new Error("Login failed");
     }
 
-    return await response.json();
+    const data = await response.json();
+    localStorage.setItem("token", data.token); // assuming the token is in the 'token' property of the response
+    return data;
   },
 );
 

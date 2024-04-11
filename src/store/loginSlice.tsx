@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { postLogin, signOut } from "../http/LoginHttp.tsx";
 import { setToken } from "../util/localstorage.ts";
+import { TokenType } from "../util/types.ts";
 
 interface LoginState {
   loading: boolean;
@@ -27,21 +28,24 @@ export const loginSlice = createSlice({
     builder.addCase(postLogin.rejected, (state) => {
       state.loading = false;
     });
-    builder.addCase(postLogin.fulfilled, (state, action) => {
-      state.accessToken = action.payload.accessToken;
-      state.userId = action.payload.userId;
-      state.loading = false;
-      state.expiresIn = action.payload.expiresIn;
-      setToken(action.payload.accessToken);
-      
-    });
+    builder.addCase(
+      postLogin.fulfilled,
+      (state, action: PayloadAction<TokenType>) => {
+        state.accessToken = action.payload.accessToken;
+        state.userId = action.payload.userId;
+        state.loading = false;
+        state.expiresIn = action.payload.expiresIn;
+        setToken(action.payload.accessToken);
+        localStorage.setItem("loginState", JSON.stringify(state));
+      },
+    );
     builder.addCase(signOut.fulfilled, (state) => {
       state.loading = false;
       state.accessToken = null;
       state.userId = 0;
       state.expiresIn = 0;
+      localStorage.removeItem("loginState");
     });
   },
 });
 export { signOut };
-
