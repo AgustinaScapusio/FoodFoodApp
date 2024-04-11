@@ -3,18 +3,26 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { ProfileCard } from "./UI/ProfileCard";
 import { useParams } from "react-router-dom";
+import { fetchPersonaliaById } from "../../http/PersonaliaHttp";
+import { PersonaliaUserType } from "../../util/types";
 
 export function Profile() {
   const { data } = useAppSelector((state) => state.users);
+  const { data: personaliaData } = useAppSelector((state) => state.personalia);
   const dispatch = useAppDispatch();
   const { id } = useParams();
 
 
   useEffect(() => {
-    if (id !== null && id !== undefined) {
-      dispatch(fetchUsersById(parseInt(id)));
-    }
-  }, [dispatch, id]);
+    if (id) {
+    const parsedId = parseInt(id);
+    dispatch(fetchUsersById(parsedId));
+    const personaliaUser = personaliaData.find((personalia) => personalia.userId === parsedId);
+    personaliaUser &&
+    dispatch(fetchPersonaliaById(personaliaUser.id));
+    
+  }
+  }, [dispatch, id, personaliaData]);
 
   const [showInfo, setShowInfo] = useState<number>(0);
 
@@ -49,13 +57,20 @@ export function Profile() {
                 password={user.password}
                 userName={user.userName}
               />
+              
             ))
           ) : showInfo === 1 ? (
             showInfo === 1 && (
               <h1>payment</h1>
             ) 
           ) : showInfo === 2 ? (
-           <div> wow </div>
+            personaliaData &&
+           personaliaData.map((personalia:PersonaliaUserType) => (
+            <div key={personalia.id}>
+              <h1> Your registred address: </h1>
+              <h1>{personalia.address}</h1>
+              </div>
+            ))
           ) : showInfo === 3 ? (
             <h1>order history</h1>
           ) : (
