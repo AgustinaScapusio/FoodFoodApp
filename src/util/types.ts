@@ -68,3 +68,21 @@ export type TokenType = {
   expiresIn: number;
   userId: number;
 };
+
+export type PersonaliaUserType = {
+  id: number;
+  userId: number;
+  firstName: string;
+  lastName: string;
+  birthday: Date;
+  address: string;
+};
+
+export type PaymentType = {
+  id: number;
+  cardNumber: string;
+  expiryDate: Date;
+  type: string;
+  personaliaId: number;
+  cardHolder: string;
+};

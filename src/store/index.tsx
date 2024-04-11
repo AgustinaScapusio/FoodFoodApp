@@ -7,6 +7,7 @@ import { userSlice } from "./userSlice.tsx";
 import { userProgressSlice } from "./userProgressSlice.tsx";
 import { loginSlice } from "./loginSlice.tsx";
 import { registerSlice } from "./registerSlice.tsx";
+import { personaliaSlice } from "./personaliaSlice.tsx";
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ export const store = configureStore({
     users: userSlice.reducer,
     auth: loginSlice.reducer,
     register: registerSlice.reducer,
+    personalia: personaliaSlice.reducer,
   },
 });
 
