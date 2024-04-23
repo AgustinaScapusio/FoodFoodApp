@@ -8,13 +8,13 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { LoginPage } from "./pages/LoginPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { RestaurantsPage } from "./pages/RestaurantsPage";
-import { tokenLoader } from "./util/localstorage.ts";
+// import { tokenLoader } from "./util/localstorage.ts";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootPage />,
-    loader: tokenLoader,
+    // loader: tokenLoader,
     children: [
       { index: true, element: <HomePage /> },
       { path: "/restaurants/:id", element: <RestaurantDetailsPage /> },
